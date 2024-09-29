@@ -1,0 +1,206 @@
+{
+  "main": {
+    "id": "8f915d6ab60a4baa",
+    "type": "split",
+    "children": [
+      {
+        "id": "a216f51dcf0c797b",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "bfaa3ad6cf83c61e",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Criação do Parser.canvas",
+                "viewState": {
+                  "x": 1423.6364363644745,
+                  "y": -834.0241331064888,
+                  "zoom": 0.3333333333333332
+                }
+              }
+            }
+          },
+          {
+            "id": "621792f1b8fb5fab",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notas - Grupo/0 - Objetivos.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "36d6444dfe3281bf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "a45433653340ea14",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "0a4c8f95a4ac46bd",
+    "type": "split",
+    "children": [
+      {
+        "id": "8d6a84d3c72d4568",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "deb22fe655c9e0ab",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "162290f27e4ab8a5",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "b906f8f17eb87095",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 234.5
+  },
+  "right": {
+    "id": "4effc0337868229d",
+    "type": "split",
+    "children": [
+      {
+        "id": "2c0764973b09a205",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "cdb0d87123e124af",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Criação do Parser.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5e06d6925ea72653",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Criação do Parser.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "db024efe0869bcae",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "d4e72872d441fb96",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Criação do Parser.canvas"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "bfaa3ad6cf83c61e",
+  "lastOpenFiles": [
+    "Pasted image 20240919201223.png",
+    "Notas - Grupo/1 - SimpleLang - Gramática.md",
+    "Notas - Claudiao/3.1 - Programa.md",
+    "Notas - Grupo/0 - Objetivos.md",
+    "Criação do Parser.canvas",
+    "Notas - Claudiao/Explicação gptista.md",
+    "Notas - Grupo",
+    "Imagens",
+    "Notas - Claudiao",
+    "Notas - Claudiao/2 - Automato.md",
+    "Imagens/2.1 - Png.png",
+    "Notas - Claudiao/3 - Parser.md",
+    "Notas - Claudiao/1 - Gramatica.md",
+    "Template Inicial/2 - Automato",
+    "Template Inicial"
+  ]
+}

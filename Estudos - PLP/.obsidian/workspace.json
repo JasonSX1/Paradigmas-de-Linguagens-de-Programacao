@@ -1,0 +1,163 @@
+{
+  "main": {
+    "id": "3f11bece77233b7b",
+    "type": "split",
+    "children": [
+      {
+        "id": "8c1184d2badcf023",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b58c40b033450871",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "Anotações 26 09 - cap 5.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "213887575414e3e6",
+    "type": "split",
+    "children": [
+      {
+        "id": "358a6306dd77b6a7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9e8676dfb28656f5",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "0e50f6904d85de17",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "93c43e5d163f97ec",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 249.5
+  },
+  "right": {
+    "id": "311bfeee6f91de20",
+    "type": "split",
+    "children": [
+      {
+        "id": "eb5e532d96750dda",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "5eac302342d6ebb2",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Anotações 26 09 - cap 5.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "daf2f0d005a8fb26",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "Anotações 26 09 - cap 5.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "25a5916c92d594c2",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "6bbf5d7642b179f4",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Anotações 26 09 - cap 5.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Abrir a troca rápida": false,
+      "graph:Abrir visualização em gráfico": false,
+      "canvas:Criar novo canvas": false,
+      "daily-notes:Abrir a nota de hoje": false,
+      "templates:Inserir modelo": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "b58c40b033450871",
+  "lastOpenFiles": [
+    "Mind Map - PLP.canvas",
+    "Anotações 26 09 - cap 5.md",
+    "Aula 19.09/BNF.md",
+    "Semântica (Estática vs Dinamica).md",
+    "BNF vs EBNF.md",
+    "Gramática de Atributos.md",
+    "Notas - 26 09 - Aula 3 Material de suporte.md",
+    "Sem título",
+    "Aula 19.09/Correção questões da semana.md",
+    "Aula 19.09",
+    "Welcome.md"
+  ]
+}

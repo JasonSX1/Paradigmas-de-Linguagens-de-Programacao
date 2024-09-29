@@ -1,0 +1,1 @@
+Falando sobre a caracteristica basica de todas as lps, que funcionam com base na arquitetura de von neumann, falando sobre os conectores léxicos e seu historico nas linguagens, 

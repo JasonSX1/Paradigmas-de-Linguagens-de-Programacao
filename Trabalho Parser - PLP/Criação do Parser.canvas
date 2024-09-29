@@ -1,0 +1,19 @@
+{
+	"nodes":[
+		{"id":"b88205d04b80ae4f","type":"file","file":"Notas - Claudiao/3 - Parser.md","x":-789,"y":53,"width":800,"height":693,"color":"1"},
+		{"id":"8219fd6c04c2fe9c","type":"file","file":"Notas - Claudiao/1 - Gramatica.md","x":-789,"y":-1040,"width":580,"height":400,"color":"4"},
+		{"id":"db140a96e9facee5","type":"file","file":"Notas - Claudiao/2 - Automato.md","x":120,"y":-639,"width":560,"height":693,"color":"3"},
+		{"id":"9b214aad6ce686a5","type":"file","file":"Notas - Grupo/1 - SimpleLang - Gramática.md","x":1200,"y":-1040,"width":460,"height":400,"color":"5"},
+		{"id":"4338bf4e4cb99509","type":"file","file":"Imagens/2.1 - Png.png","x":-789,"y":-447,"width":841,"height":309,"color":"3"},
+		{"id":"3a1506a3c051bc6a","type":"file","file":"Notas - Claudiao/3.1 - Programa.md","x":-789,"y":-1300,"width":400,"height":200,"color":"#ff7575"},
+		{"id":"38adb9e499fb9963","type":"file","file":"Notas - Claudiao/Explicação gptista.md","x":-2180,"y":-980,"width":1040,"height":2320,"color":"6"}
+	],
+	"edges":[
+		{"id":"642edf91ef903463","fromNode":"4338bf4e4cb99509","fromSide":"right","toNode":"db140a96e9facee5","toSide":"left","color":"3"},
+		{"id":"6ee66f254b2ffcb4","fromNode":"8219fd6c04c2fe9c","fromSide":"bottom","toNode":"4338bf4e4cb99509","toSide":"top","color":"4"},
+		{"id":"4704acd5969d1ad8","fromNode":"4338bf4e4cb99509","fromSide":"bottom","toNode":"b88205d04b80ae4f","toSide":"top","color":"3"},
+		{"id":"34f4ac3a6d46524e","fromNode":"8219fd6c04c2fe9c","fromSide":"right","toNode":"9b214aad6ce686a5","toSide":"left"},
+		{"id":"aa887fd50879845e","fromNode":"9b214aad6ce686a5","fromSide":"left","toNode":"8219fd6c04c2fe9c","toSide":"right"},
+		{"id":"30337884c8f9641b","fromNode":"b88205d04b80ae4f","fromSide":"left","toNode":"3a1506a3c051bc6a","toSide":"left","color":"1"}
+	]
+}
