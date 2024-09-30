@@ -15,9 +15,9 @@
               "state": {
                 "file": "Criação do Parser.canvas",
                 "viewState": {
-                  "x": 1423.6364363644745,
-                  "y": -834.0241331064888,
-                  "zoom": 0.3333333333333332
+                  "x": -314.65323518688666,
+                  "y": -647.4459172435094,
+                  "zoom": -0.6957097016879848
                 }
               }
             }
@@ -45,20 +45,9 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "a45433653340ea14",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
-                "mode": "source",
-                "source": false
-              }
-            }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -108,7 +97,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 234.5
+    "width": 200
   },
   "right": {
     "id": "4effc0337868229d",
@@ -124,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Criação do Parser.canvas",
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -141,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Criação do Parser.canvas",
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -164,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Criação do Parser.canvas"
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md"
               }
             }
           }
@@ -185,13 +174,13 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "bfaa3ad6cf83c61e",
+  "active": "36d6444dfe3281bf",
   "lastOpenFiles": [
-    "Pasted image 20240919201223.png",
-    "Notas - Grupo/1 - SimpleLang - Gramática.md",
-    "Notas - Claudiao/3.1 - Programa.md",
     "Notas - Grupo/0 - Objetivos.md",
     "Criação do Parser.canvas",
+    "Notas - Grupo/1 - SimpleLang - Gramática.md",
+    "Pasted image 20240919201223.png",
+    "Notas - Claudiao/3.1 - Programa.md",
     "Notas - Claudiao/Explicação gptista.md",
     "Notas - Grupo",
     "Imagens",

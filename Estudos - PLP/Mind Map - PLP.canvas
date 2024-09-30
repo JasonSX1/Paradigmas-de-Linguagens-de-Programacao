@@ -16,8 +16,8 @@
 		{"id":"80ecf7e9c27f0289","type":"text","text":"Conceitos de LP - Sebesta","x":-1280,"y":-1095,"width":246,"height":60},
 		{"id":"a776d2a5222cf5bf","type":"text","text":"06/10 - Abstração de processos e dados","x":-560,"y":-60,"width":261,"height":60,"color":"4"},
 		{"id":"4e7843b9d5dcaa75","type":"text","text":"[[Anotações 26 09 - cap 5]]","x":-169,"y":-250,"width":138,"height":86},
-		{"id":"a9a67ac30be29a12","type":"file","file":"Aula 19.09/BNF.md","x":740,"y":-944,"width":400,"height":298,"color":"2"},
-		{"id":"189c4251256424d4","type":"text","text":"[[Gramática de Atributos]]","x":1180,"y":-1147,"width":250,"height":60}
+		{"id":"189c4251256424d4","type":"text","text":"[[Gramática de Atributos]]","x":1180,"y":-1147,"width":250,"height":60},
+		{"id":"a9a67ac30be29a12","type":"file","file":"Aula 19.09/BNF.md","x":740,"y":-940,"width":400,"height":298,"color":"2"}
 	],
 	"edges":[
 		{"id":"c40f0583eefa5d5b","fromNode":"1648a2e3da3cbb13","fromSide":"right","toNode":"67d5696b44b2d217","toSide":"left","color":"1"},

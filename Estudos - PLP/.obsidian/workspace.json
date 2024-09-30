@@ -11,9 +11,24 @@
             "id": "b58c40b033450871",
             "type": "leaf",
             "state": {
+              "type": "canvas",
+              "state": {
+                "file": "Mind Map - PLP.canvas",
+                "viewState": {
+                  "x": 198.74327677915278,
+                  "y": -544.8273053900724,
+                  "zoom": -1.3915529569930043
+                }
+              }
+            }
+          },
+          {
+            "id": "c0f13f3fde62e6a6",
+            "type": "leaf",
+            "state": {
               "type": "markdown",
               "state": {
-                "file": "Anotações 26 09 - cap 5.md",
+                "file": "Gramática de Atributos.md",
                 "mode": "source",
                 "source": false
               }
@@ -85,7 +100,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Anotações 26 09 - cap 5.md",
+                "file": "Mind Map - PLP.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +117,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Anotações 26 09 - cap 5.md",
+                "file": "Mind Map - PLP.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +140,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Anotações 26 09 - cap 5.md"
+                "file": "Mind Map - PLP.canvas"
               }
             }
           }
@@ -148,12 +163,12 @@
   },
   "active": "b58c40b033450871",
   "lastOpenFiles": [
+    "Gramática de Atributos.md",
     "Mind Map - PLP.canvas",
     "Anotações 26 09 - cap 5.md",
-    "Aula 19.09/BNF.md",
     "Semântica (Estática vs Dinamica).md",
+    "Aula 19.09/BNF.md",
     "BNF vs EBNF.md",
-    "Gramática de Atributos.md",
     "Notas - 26 09 - Aula 3 Material de suporte.md",
     "Sem título",
     "Aula 19.09/Correção questões da semana.md",
