@@ -7,7 +7,7 @@
 		{"id":"4338bf4e4cb99509","type":"file","file":"Imagens/2.1 - Png.png","x":-789,"y":-447,"width":841,"height":309,"color":"3"},
 		{"id":"3a1506a3c051bc6a","type":"file","file":"Notas - Claudiao/3.1 - Programa.md","x":-789,"y":-1300,"width":400,"height":200,"color":"#ff7575"},
 		{"id":"38adb9e499fb9963","type":"file","file":"Notas - Claudiao/Explicação gptista.md","x":-2180,"y":-980,"width":1040,"height":2320,"color":"6"},
-		{"id":"bfbc6f7d8dcbdad1","x":1880,"y":-980,"width":1000,"height":2380,"type":"file","file":"Notas - Grupo/0 - Objetivos.md"}
+		{"id":"bfbc6f7d8dcbdad1","type":"file","file":"Notas - Grupo/0 - Objetivos.md","x":1880,"y":-980,"width":1000,"height":2380}
 	],
 	"edges":[
 		{"id":"642edf91ef903463","fromNode":"4338bf4e4cb99509","fromSide":"right","toNode":"db140a96e9facee5","toSide":"left","color":"3"},
