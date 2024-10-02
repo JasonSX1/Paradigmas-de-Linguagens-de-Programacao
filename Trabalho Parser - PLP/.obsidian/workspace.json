@@ -46,7 +46,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -112,7 +113,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Criação do Parser.canvas",
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -129,7 +130,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Criação do Parser.canvas",
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -152,7 +153,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Criação do Parser.canvas"
+                "file": "Notas - Grupo/1 - SimpleLang - Gramática.md"
               }
             }
           }
@@ -173,11 +174,11 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "bfaa3ad6cf83c61e",
+  "active": "36d6444dfe3281bf",
   "lastOpenFiles": [
     "Notas - Grupo/0 - Objetivos.md",
-    "Notas - Grupo/1 - SimpleLang - Gramática.md",
     "Criação do Parser.canvas",
+    "Notas - Grupo/1 - SimpleLang - Gramática.md",
     "Pasted image 20240919201223.png",
     "Notas - Claudiao/3.1 - Programa.md",
     "Notas - Claudiao/Explicação gptista.md",

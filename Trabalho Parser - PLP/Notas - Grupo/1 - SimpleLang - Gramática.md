@@ -17,13 +17,16 @@ print ("A é menor ou engual que b");
 <instrucao> ::= <atribuicao> "\n"*
 | <declaracao> "\n"*
 | <inst_if> "\n"*
-| "print" "(" <expressao> ")" "\n"*
+| <inst_print> "\n"*
+
+<inst_print> ::= "print" <espaco_ou_quebra> "(" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> ")" <espaco_ou_quebra> "\n"*
+| "print" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> "\n"*
 
 /*Regra de declaracao de variáveis*/
 <declaracao> ::= "int " <lista_vars>
 | "float " <lista_vars>
 
-<lista_vars> ::= <var> ( "," <var> )* <inicializacao_opcional>
+<lista_vars> ::= <var> ( ", " <var> )* <inicializacao_opcional>
 
 <inicializacao_opcional> ::= " = " <expressao> | "\n"*
 
@@ -40,13 +43,13 @@ print ("A é menor ou engual que b");
 | <var>
 
 /*Expressoes logicas*/
-<exp_logica> ::= <bool>
-| "(" <exp_logica> ")"
-| "!" <exp_logica>
-| <exp_logica> <op_logico> <exp_logica>
-| <exp_matematica> <op_eq> <exp_matematica>
-| <exp_logica> <op_eq> <exp_logica>
-| <exp_matematica> <op_comp> <exp_matematica>
+<exp_logica> ::= " "* <bool>
+| "(" " "* <exp_logica> " "* ")"
+| "!" " "* <exp_logica>
+| <exp_logica> " "* <op_logico> " "* <exp_logica>
+| <exp_matematica> " "* <op_eq> " "* <exp_matematica>
+| <exp_logica> " "* <op_eq> " "* <exp_logica>
+| <exp_matematica> " "* <op_comp> " "* <exp_matematica>
 | <var>
 
 /* Definicao de número, operador matemático e variáveis*/
@@ -60,8 +63,10 @@ print ("A é menor ou engual que b");
 <op_eq> ::= "==" | "!="
 <op_comp> ::= ">" | "<" | ">=" | "<="
 
-<inst_if> ::= "if(" <exp_logica> "){" "\n"* <expressao> "}" "\n"*
-| "if(" <exp_matematica> "){" "\n"* <expressao> "}" "\n"*
-   "else {" <expressao> "}" "\n"*
-/*Testar assim e depois testar com expressao diretamente ao inves de usar logica e matematica*/
-/*Tem que corrigir um if (a>b) e tb tem q corrigir a instanciacao*/
+/*Regra para reconhecer espaços e quebras de linha (opcional)*/
+<espaco_ou_quebra> ::= (" " | "\n")*
+
+/*Estrutura condicional if/else com suporte a espaços e quebras de linha*/
+<inst_if> ::= "if" <espaco_ou_quebra> "(" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> ")" <espaco_ou_quebra> "{" <espaco_ou_quebra> <instrucao>* <espaco_ou_quebra> "}" <espaco_ou_quebra>* <else_opcional>*
+
+<else_opcional> ::= "else" <espaco_ou_quebra> "{" <espaco_ou_quebra> <instrucao>* <espaco_ou_quebra> "}"
