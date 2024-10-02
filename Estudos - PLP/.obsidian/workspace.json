@@ -11,14 +11,11 @@
             "id": "b58c40b033450871",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "Mind Map - PLP.canvas",
-                "viewState": {
-                  "x": 198.74327677915278,
-                  "y": -544.8273053900724,
-                  "zoom": -1.3915529569930043
-                }
+                "file": "Aula 19.09/BNF.md",
+                "mode": "source",
+                "source": false
               }
             }
           },
@@ -100,7 +97,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Mind Map - PLP.canvas",
+                "file": "Aula 19.09/BNF.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -117,7 +114,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Mind Map - PLP.canvas",
+                "file": "Aula 19.09/BNF.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -140,7 +137,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Mind Map - PLP.canvas"
+                "file": "Aula 19.09/BNF.md"
               }
             }
           }
@@ -163,15 +160,15 @@
   },
   "active": "b58c40b033450871",
   "lastOpenFiles": [
-    "Gramática de Atributos.md",
-    "Mind Map - PLP.canvas",
+    "Aula 19.09/Correção questões da semana.md",
     "Anotações 26 09 - cap 5.md",
-    "Semântica (Estática vs Dinamica).md",
-    "Aula 19.09/BNF.md",
     "BNF vs EBNF.md",
+    "Gramática de Atributos.md",
+    "Semântica (Estática vs Dinamica).md",
+    "Mind Map - PLP.canvas",
+    "Aula 19.09/BNF.md",
     "Notas - 26 09 - Aula 3 Material de suporte.md",
     "Sem título",
-    "Aula 19.09/Correção questões da semana.md",
     "Aula 19.09",
     "Welcome.md"
   ]

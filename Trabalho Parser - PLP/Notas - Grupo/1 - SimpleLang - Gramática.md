@@ -26,7 +26,7 @@ print ("A é menor ou engual que b");
 <declaracao> ::= "int " <lista_vars>
 | "float " <lista_vars>
 
-<lista_vars> ::= <var> ( ", " <var> )* <inicializacao_opcional>
+<lista_vars> ::= <var> ( "," " "* <var> )* <inicializacao_opcional>
 
 <inicializacao_opcional> ::= " = " <expressao> | "\n"*
 
@@ -39,7 +39,7 @@ print ("A é menor ou engual que b");
 /*Expressoes matematicas*/
 <exp_matematica> ::= <numero>
 | "(" <exp_matematica> ")"
-| <exp_matematica> <op_mat> <exp_matematica>
+| <exp_matematica> " "* <op_mat> " "* <exp_matematica>
 | <var>
 
 /*Expressoes logicas*/
@@ -55,7 +55,7 @@ print ("A é menor ou engual que b");
 /* Definicao de número, operador matemático e variáveis*/
 <numero> ::= [0-9]+
 <op_mat> ::= "+" | "-" | "*" | "/"
-<var> ::= [a-z]+ | [A-Z]+
+<var> ::= ("_" | [a-z] | [A-Z] | [0-9])*
 
 /* Operadores lógicos */
 <op_logico> ::= "&&" | "||"
