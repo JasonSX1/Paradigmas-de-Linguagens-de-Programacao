@@ -11,13 +11,19 @@ print ("A é menor ou engual que b");
 }
 --------------------------------------------------
 /*Inicio do programa, podendo receber uma ou mais instrucoes*/
-<simpleLang> ::= <instrucao>+ 
+<simpleLang> ::= <instrucao>+
 
 /*Tipos de instrucao permitidos no programa*/
-<instrucao> ::= <atribuicao> "\n"*
+<instrucao> ::= <comentario> "\n"*
+| <atribuicao> "\n"*
 | <declaracao> "\n"*
 | <inst_if> "\n"*
 | <inst_print> "\n"*
+| <inst_while> "\n"*
+ 
+<comentario> ::= "#" <texto_comentario>
+<texto_comentario> ::= <caractere>* "\n"?
+<caractere> ::= "_" | [a-z] | [A-Z] | [0-9] | " " | "+" | "-" | "*" | "/"
 
 <inst_print> ::= "print" <espaco_ou_quebra> "(" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> ")" <espaco_ou_quebra> "\n"*
 | "print" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> "\n"*
@@ -55,7 +61,7 @@ print ("A é menor ou engual que b");
 /* Definicao de número, operador matemático e variáveis*/
 <numero> ::= [0-9]+
 <op_mat> ::= "+" | "-" | "*" | "/"
-<var> ::= ("_" | [a-z] | [A-Z] | [0-9])*
+<var> ::= ([a-z] | [A-Z] | [0-9])*
 
 /* Operadores lógicos */
 <op_logico> ::= "&&" | "||"
@@ -63,10 +69,13 @@ print ("A é menor ou engual que b");
 <op_eq> ::= "==" | "!="
 <op_comp> ::= ">" | "<" | ">=" | "<="
 
-/*Regra para reconhecer espaços e quebras de linha (opcional)*/
+/*Regra para reconhecer espaços e quebras de linha*/
 <espaco_ou_quebra> ::= (" " | "\n")*
 
 /*Estrutura condicional if/else com suporte a espaços e quebras de linha*/
-<inst_if> ::= "if" <espaco_ou_quebra> "(" <espaco_ou_quebra> <expressao> <espaco_ou_quebra> ")" <espaco_ou_quebra> "{" <espaco_ou_quebra> <instrucao>* <espaco_ou_quebra> "}" <espaco_ou_quebra>* <else_opcional>*
+<inst_if> ::= "if" <espaco_ou_quebra>? "(" <espaco_ou_quebra>? <expressao> <espaco_ou_quebra>? ")" <espaco_ou_quebra>? "{" <espaco_ou_quebra>? <instrucao>* <espaco_ou_quebra>? "}" <espaco_ou_quebra>? <inst_else>? <espaco_ou_quebra>?
 
-<else_opcional> ::= "else" <espaco_ou_quebra> "{" <espaco_ou_quebra> <instrucao>* <espaco_ou_quebra> "}"
+<inst_else> ::= "else" <espaco_ou_quebra>? "{" <espaco_ou_quebra>? <instrucao>* <espaco_ou_quebra>? "}" <espaco_ou_quebra>?
+
+/*Estrutura de loop while com suporte a espaços e quebras de linha*/
+<inst_while> ::= "while" <espaco_ou_quebra>? "(" <espaco_ou_quebra>? <expressao> <espaco_ou_quebra>? ")" <espaco_ou_quebra>? "{" <espaco_ou_quebra> <instrucao>* <espaco_ou_quebra> "}" <espaco_ou_quebra>?
