@@ -25,7 +25,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "anotacoes 03 10.md",
+                "file": "Anotações 26 09 - cap 5.md",
                 "mode": "source",
                 "source": false
               }
@@ -37,14 +37,14 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Gramática de Atributos.md",
+                "file": "anotacoes 03 10.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -171,14 +171,14 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "11b38aafe986ffcc",
+  "active": "c0f13f3fde62e6a6",
   "lastOpenFiles": [
-    "Aula 19.09/BNF.md",
-    "anotacoes 03 10.md",
-    "Gramática de Atributos.md",
-    "Aula 19.09/Correção questões da semana.md",
     "Anotações 26 09 - cap 5.md",
     "BNF vs EBNF.md",
+    "Gramática de Atributos.md",
+    "Aula 19.09/BNF.md",
+    "anotacoes 03 10.md",
+    "Aula 19.09/Correção questões da semana.md",
     "Semântica (Estática vs Dinamica).md",
     "Mind Map - PLP.canvas",
     "Notas - 26 09 - Aula 3 Material de suporte.md",
