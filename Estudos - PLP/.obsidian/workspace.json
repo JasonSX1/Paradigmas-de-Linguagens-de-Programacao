@@ -44,7 +44,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -110,7 +110,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "anotacoes 03 10.md",
+                "file": "Anotações 26 09 - cap 5.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -127,7 +127,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "anotacoes 03 10.md",
+                "file": "Anotações 26 09 - cap 5.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -150,7 +150,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "anotacoes 03 10.md"
+                "file": "Anotações 26 09 - cap 5.md"
               }
             }
           }
@@ -171,13 +171,13 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "c0f13f3fde62e6a6",
+  "active": "11b38aafe986ffcc",
   "lastOpenFiles": [
+    "Aula 19.09/BNF.md",
     "Anotações 26 09 - cap 5.md",
+    "anotacoes 03 10.md",
     "BNF vs EBNF.md",
     "Gramática de Atributos.md",
-    "Aula 19.09/BNF.md",
-    "anotacoes 03 10.md",
     "Aula 19.09/Correção questões da semana.md",
     "Semântica (Estática vs Dinamica).md",
     "Mind Map - PLP.canvas",
