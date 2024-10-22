@@ -1,4 +1,4 @@
-public enum State {
+public enum Estado {
     //Estado inicial e final
     q0,
 
@@ -44,5 +44,7 @@ public enum State {
     q27, //Após receber "{"
     q28, //Após receber a instrucao
     q29, //Após receber "}"
-    qAux3; //Estado que recebe as quebras de linha ou espaço e retorna tudo para os estados de q24 a q29
+    qAux3, //Estado que recebe as quebras de linha ou espaço e retorna tudo para os estados de q24 a q29
+
+    qErro; //Estado de erro
 }

@@ -6,39 +6,45 @@ import java.io.FileReader;
 
 public class Parser {
     public static void main(String[] args) {
-        if (args.length != 1) {
-            System.out.println("Uso: java Parser <nome-do-arquivo>");
-            return;
-        }
-
-        String nomeArquivo = args[0];
+        String nomeArquivo = "aaa"; // Path do arquivo
+    
         String entrada = "";
- 
+     
         Parser p = new Parser();
-
+    
         try (BufferedReader leitor = new BufferedReader(new FileReader(nomeArquivo))) {
             String linha;
             while ((linha = leitor.readLine()) != null)
                 entrada += linha;
-			
+            
         } catch (IOException e) {
-			System.out.println("Erro ao ler o arquivo: " + e.getMessage());
+            System.out.println("Erro ao ler o arquivo: " + e.getMessage());
             return;
         }
-
+    
         boolean resultado = p.processar(entrada);
         System.out.println("Entrada " + (resultado ? "valida" : "invalida"));
     }
-
+    
     private List<String> tokenizar(String entrada) {
         List<String> tokens = new ArrayList<>();
         int i = 0;
         while (i < entrada.length()) {
             char charAtual = entrada.charAt(i);
-
-            if (Character.isLetter(charAtual)) {  // Identificador
+    
+            if (Character.isWhitespace(charAtual)) {
+                i++;  // Ignora espaços em branco
+                continue;
+            }
+    
+            if (charAtual == '#') {  // Comentário
+                // Ignora o comentário até o final da linhaa
+                while (i < entrada.length() && entrada.charAt(i) != '\n') {
+                    i++;
+                }
+            } else if (Character.isLetter(charAtual)) {  // Identificador ou palavra-chave
                 StringBuilder identificador = new StringBuilder();
-                while (i < entrada.length() && Character.isLetter(entrada.charAt(i))) {
+                while (i < entrada.length() && Character.isLetterOrDigit(entrada.charAt(i))) {
                     identificador.append(entrada.charAt(i));
                     i++;
                 }
@@ -50,18 +56,24 @@ public class Parser {
                     i++;
                 }
                 tokens.add(numero.toString());
-            } else if (charAtual == '=' || charAtual == ';') {
+            } else if ("=();{}".indexOf(charAtual) != -1) {  // Símbolos específicos
                 tokens.add(String.valueOf(charAtual));
                 i++;
-            } else if (i + 5 <= entrada.length() && entrada.substring(i, i + 5).equals("print")) {  // Palavra-chave 'print'
-                tokens.add("print");
-                i += 5;
+            } else if (i + 2 <= entrada.length() && entrada.substring(i, i + 2).equals("if")) {  // Palavra-chave 'if'
+                tokens.add("if");
+                i += 2;
+            } else if (i + 4 <= entrada.length() && entrada.substring(i, i + 4).equals("else")) {  // Palavra-chave 'else'
+                tokens.add("else");
+                i += 4;
             } else {
-                i++;
+                i++;  // Ignora caracteres inválidos (ou lança erro dependendo do caso)
             }
         }
         return tokens;
     }
+
+    //ATÉ AQ TÁ DELICIA
+    
 
     private Estado transitar(Estado estado, String token) {
         switch (estado) {
