@@ -29,15 +29,21 @@ public class Token {
     public List<Token> tokenizar(String entrada) {
         List<Token> tokens = new ArrayList<>();
         int i = 0;
-
+    
         while (i < entrada.length()) {
             char charAtual = entrada.charAt(i);
-
-            if (Character.isWhitespace(charAtual)) {
-                i++;  // Ignora espaços em branco
+    
+            if (charAtual == '\n') {  // Captura a quebra de linha como token
+                tokens.add(new Token("Quebra de linha", "\n"));
+                i++;
                 continue;
             }
-
+    
+            if (Character.isWhitespace(charAtual)) {
+                i++;  // Ignora outros espaços em branco
+                continue;
+            }
+    
             if (charAtual == '#') {  // Comentário
                 while (i < entrada.length() && entrada.charAt(i) != '\n') {
                     i++;
@@ -49,9 +55,9 @@ public class Token {
                     i++;
                 }
                 String valorIdentificador = identificador.toString();
-                
+    
                 if (valorIdentificador.equals("int") || valorIdentificador.equals("float") ||
-                    valorIdentificador.equals("if") || valorIdentificador.equals("else") || 
+                    valorIdentificador.equals("if") || valorIdentificador.equals("else") ||
                     valorIdentificador.equals("while") || valorIdentificador.equals("print")) {
                     tokens.add(new Token("Palavra-chave", valorIdentificador));
                 } else {
@@ -71,6 +77,14 @@ public class Token {
                 i++;  // Ignora caracteres inválidos
             }
         }
+    
+        // Log para imprimir a lista de tokens gerados
+        System.out.println("Tokens gerados:");
+        for (Token token : tokens) {
+            System.out.println(token);
+        }
+    
         return tokens;
     }
+    
 }
