@@ -20,10 +20,7 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token{" +
-                "tipo='" + tipo + '\'' +
-                ", valor='" + valor + '\'' +
-                '}';
+        return "Token [" +"tipo='" + tipo + '\'' + ", valor='" + valor + '\'' +']';
     }
 
     public List<Token> tokenizar(String entrada) {
@@ -70,13 +67,50 @@ public class Token {
                     i++;
                 }
                 tokens.add(new Token("Número", numero.toString()));
-            } else if ("=();{}".indexOf(charAtual) != -1) {  // Símbolos específicos
+            } 
+            
+            // Operadores lógicos e de comparação
+            else if (entrada.startsWith("&&", i)) {
+                tokens.add(new Token("OperadorLógico", "&&"));
+                i += 2;
+            } else if (entrada.startsWith("||", i)) {
+                tokens.add(new Token("OperadorLógico", "||"));
+                i += 2;
+            } else if (entrada.startsWith("!", i)) {
+                tokens.add(new Token("OperadorLógico", "!"));
+                i++;
+            } else if (entrada.startsWith("==", i)) {
+                tokens.add(new Token("OperadorComparacao", "=="));
+                i += 2;
+            } else if (entrada.startsWith("!=", i)) {
+                tokens.add(new Token("OperadorComparacao", "!="));
+                i += 2;
+            } else if (entrada.startsWith(">=", i)) {
+                tokens.add(new Token("OperadorComparacao", ">="));
+                i += 2;
+            } else if (entrada.startsWith("<=", i)) {
+                tokens.add(new Token("OperadorComparacao", "<="));
+                i += 2;
+            } else if (charAtual == '>') {
+                tokens.add(new Token("OperadorComparacao", ">"));
+                i++;
+            } else if (charAtual == '<') {
+                tokens.add(new Token("OperadorComparacao", "<"));
+                i++;
+            }
+            
+            // Símbolos específicos
+            else if ("=();{}".indexOf(charAtual) != -1) {  
                 tokens.add(new Token("Símbolo", String.valueOf(charAtual)));
                 i++;
-            } else if ("+-*/%".indexOf(charAtual) != -1) {  // Operadores matemáticos
+            } 
+            
+            // Operadores matemáticos
+            else if ("+-*/%".indexOf(charAtual) != -1) {  
                 tokens.add(new Token("Operador", String.valueOf(charAtual)));
                 i++;
-            } else {
+            } 
+            else {
                 i++;  // Ignora caracteres inválidos
             }
         }
@@ -89,5 +123,4 @@ public class Token {
     
         return tokens;
     }
-       
 }
