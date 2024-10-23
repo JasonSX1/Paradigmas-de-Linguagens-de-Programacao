@@ -16,155 +16,160 @@ public class Transicoes {
                     return Estado.q12; // Comando if
                 } else if (token.getValor().equals("while")) {
                     return Estado.q23; // Comando while
-                } else if (Character.isLetter(token.toString().charAt(0))) {
+                } else if (Character.isLetter(token.getValor().charAt(0))) {
                     return Estado.q5; // Identificador de variável
                 }
                 break;
-
+    
             case q1: // Comentário
                 return Estado.q2; // Aceita qualquer texto após "#"
-
+    
             case q3: // Declaração de variável
-                if (Character.isLetter(token.toString().charAt(0))) {
+                if (Character.isLetter(token.getValor().charAt(0))) {
                     return Estado.q4; // Lista de variáveis (nome da variável)
                 }
                 break;
-
+    
             case q4: // Após identificar a variável
                 if (token.getValor().equals("=")) {
                     return Estado.q6; // Atribuição
                 } else if (token.getValor().equals("\n")) {
                     return Estado.q0; // Declaração de variável sem atribuição
                 } else {
-                    return Estado.qErro; // Se qualquer outro token for encontrado, retorna erro
+                    return Estado.qErro; // Qualquer outro token gera erro
                 }
-
+    
             case q5: // Identificador de variável
                 if (token.getValor().equals("=")) {
                     return Estado.q6; // Atribuição
                 }
                 break;
-
+    
             case q6: // Após receber "="
                 return Estado.q7; // Expressão de atribuição
-
-            case q7:
-                if (token.getValor().equals("\n")) { // Final da atribuição é uma quebra de linha
+    
+            case q7: // Expressão matemática ou lógica
+                if (token.getTipo().equals("Número") || token.getTipo().equals("Identificador")) {
+                    return Estado.q7; // Continua recebendo a expressão
+                } else if (token.getTipo().equals("Operador")) {
+                    return Estado.q7; // Operador matemático ou lógico
+                } else if (token.getValor().equals("\n")) {
                     return Estado.q0; // Final da atribuição
                 }
                 break;
-
+    
             case q8: // Comando print
                 if (token.getValor().equals("(")) {
                     return Estado.q9; // Parêntese de abertura
-                } else if (Character.isLetter(token.toString().charAt(0))) {
+                } else if (Character.isLetter(token.getValor().charAt(0))) {
                     return Estado.q10; // Print sem parênteses
                 }
                 break;
-
+    
             case q9:
                 return Estado.q10; // Recebe a expressão a ser impressa
-
+    
             case q10:
                 if (token.getValor().equals(")")) {
                     return Estado.q11; // Parêntese de fechamento
-                } else if (token.getValor().equals("\n")) { // Print sem parênteses e finalizado por quebra de linha
-                    return Estado.q0; // Final do comando print
+                } else if (token.getValor().equals("\n")) {
+                    return Estado.q0; // Print sem parênteses, finalizado por quebra de linha
                 }
                 break;
-
+    
             case q11:
-                if (token.getValor().equals("\n")) { // Agora o final do comando print também é uma quebra de linha
+                if (token.getValor().equals("\n")) {
                     return Estado.q0; // Final do comando print
                 }
                 break;
-
+    
             case q12: // Comando if
                 if (token.getValor().equals("(")) {
                     return Estado.q13; // Condição do if
                 }
                 break;
-
+    
             case q13:
                 return Estado.q14; // Expressão da condição
-
+    
             case q14:
                 if (token.getValor().equals(")")) {
                     return Estado.q15; // Fecha condição
                 }
                 break;
-
+    
             case q15:
                 if (token.getValor().equals("{")) {
                     return Estado.q16; // Início do bloco if
                 }
                 break;
-
+    
             case q16:
                 return Estado.q17; // Instrução dentro do bloco if
-
+    
             case q17:
                 if (token.getValor().equals("}")) {
                     return Estado.q18; // Fim do bloco if
                 }
                 break;
-
+    
             case q18:
                 if (token.getValor().equals("else")) {
                     return Estado.q19; // Início do bloco else
                 }
                 break;
-
+    
             case q19:
                 if (token.getValor().equals("{")) {
                     return Estado.q20; // Início do bloco else
                 }
                 break;
-
+    
             case q20:
                 return Estado.q21; // Instrução dentro do bloco else
-
+    
             case q21:
                 if (token.getValor().equals("}")) {
                     return Estado.q22; // Fim do bloco else
                 }
                 break;
-
+    
             case q23: // Comando while
                 if (token.getValor().equals("(")) {
                     return Estado.q24; // Condição do while
                 }
                 break;
-
+    
             case q24:
                 return Estado.q25; // Expressão da condição
-
+    
             case q25:
                 if (token.getValor().equals(")")) {
                     return Estado.q26; // Fim da condição while
                 }
                 break;
-
+    
             case q26:
                 if (token.getValor().equals("{")) {
                     return Estado.q27; // Início do bloco while
                 }
                 break;
-
+    
             case q27:
                 return Estado.q28; // Instrução dentro do bloco while
-
+    
             case q28:
                 if (token.getValor().equals("}")) {
                     return Estado.q29; // Fim do bloco while
                 }
                 break;
-
+    
             default:
-                return Estado.qErro; // Estado de erro se algo inesperado acontecer
+                return Estado.qErro; // Estado de erro para tokens inesperados
         }
-        return Estado.qErro; // Estado de erro para qualquer token inesperado
+        return Estado.qErro; // Estado de erro
     }
+    
 
     public boolean processar(String entrada) {
         Estado estadoAtual = Estado.q0;

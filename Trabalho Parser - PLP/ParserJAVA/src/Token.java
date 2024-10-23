@@ -40,7 +40,7 @@ public class Token {
             }
     
             if (Character.isWhitespace(charAtual)) {
-                i++;  // Ignora outros espaços em branco
+                i++;  // Ignora espaços em branco
                 continue;
             }
     
@@ -73,6 +73,9 @@ public class Token {
             } else if ("=();{}".indexOf(charAtual) != -1) {  // Símbolos específicos
                 tokens.add(new Token("Símbolo", String.valueOf(charAtual)));
                 i++;
+            } else if ("+-*/%".indexOf(charAtual) != -1) {  // Operadores matemáticos
+                tokens.add(new Token("Operador", String.valueOf(charAtual)));
+                i++;
             } else {
                 i++;  // Ignora caracteres inválidos
             }
@@ -86,5 +89,5 @@ public class Token {
     
         return tokens;
     }
-    
+       
 }
