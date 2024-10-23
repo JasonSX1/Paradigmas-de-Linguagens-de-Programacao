@@ -1,2 +1,1 @@
-x = 8;
-print x;
+x = 8;print x;

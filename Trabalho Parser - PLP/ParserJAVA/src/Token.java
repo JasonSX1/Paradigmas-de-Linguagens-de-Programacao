@@ -25,11 +25,11 @@ public class Token {
                 ", valor='" + valor + '\'' +
                 '}';
     }
-    
+
     public List<Token> tokenizar(String entrada) {
         List<Token> tokens = new ArrayList<>();
         int i = 0;
-        
+
         while (i < entrada.length()) {
             char charAtual = entrada.charAt(i);
 
@@ -39,7 +39,6 @@ public class Token {
             }
 
             if (charAtual == '#') {  // Comentário
-                // Ignora o comentário até o final da linha
                 while (i < entrada.length() && entrada.charAt(i) != '\n') {
                     i++;
                 }
@@ -51,7 +50,6 @@ public class Token {
                 }
                 String valorIdentificador = identificador.toString();
                 
-                // Determina se é uma palavra-chave ou identificador
                 if (valorIdentificador.equals("int") || valorIdentificador.equals("float") ||
                     valorIdentificador.equals("if") || valorIdentificador.equals("else") || 
                     valorIdentificador.equals("while") || valorIdentificador.equals("print")) {
@@ -70,7 +68,7 @@ public class Token {
                 tokens.add(new Token("Símbolo", String.valueOf(charAtual)));
                 i++;
             } else {
-                i++;  // Ignora caracteres inválidos (ou lança erro dependendo do caso)
+                i++;  // Ignora caracteres inválidos
             }
         }
         return tokens;
