@@ -8,7 +8,7 @@ public enum Estado {
 
     //Declaracao
     q3, //Após receber "int" ou "float" 
-    q4, //Após receber a lista_v ars
+    q4, //Após receber a lista_vars
 
     //Atribuicao
     q5, //Após receber a var
