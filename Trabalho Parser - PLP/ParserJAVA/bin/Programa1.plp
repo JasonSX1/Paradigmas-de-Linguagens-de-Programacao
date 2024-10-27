@@ -1,2 +1,5 @@
-x = 8;
-print x;
+if (x > y) {
+    print x
+} else {
+    print y
+}

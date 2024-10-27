@@ -20,26 +20,28 @@ public class Token {
 
     @Override
     public String toString() {
-        return "Token{" +
-                "tipo='" + tipo + '\'' +
-                ", valor='" + valor + '\'' +
-                '}';
+        return "Token [" +"tipo='" + tipo + '\'' + ", valor='" + valor + '\'' +']';
     }
-    
+
     public List<Token> tokenizar(String entrada) {
         List<Token> tokens = new ArrayList<>();
         int i = 0;
-        
+    
         while (i < entrada.length()) {
             char charAtual = entrada.charAt(i);
-
+    
+            if (charAtual == '\n') {  // Captura a quebra de linha como token
+                tokens.add(new Token("Quebra de linha", "\n"));
+                i++;
+                continue;
+            }
+    
             if (Character.isWhitespace(charAtual)) {
                 i++;  // Ignora espaços em branco
                 continue;
             }
-
+    
             if (charAtual == '#') {  // Comentário
-                // Ignora o comentário até o final da linha
                 while (i < entrada.length() && entrada.charAt(i) != '\n') {
                     i++;
                 }
@@ -50,10 +52,9 @@ public class Token {
                     i++;
                 }
                 String valorIdentificador = identificador.toString();
-                
-                // Determina se é uma palavra-chave ou identificador
+    
                 if (valorIdentificador.equals("int") || valorIdentificador.equals("float") ||
-                    valorIdentificador.equals("if") || valorIdentificador.equals("else") || 
+                    valorIdentificador.equals("if") || valorIdentificador.equals("else") ||
                     valorIdentificador.equals("while") || valorIdentificador.equals("print")) {
                     tokens.add(new Token("Palavra-chave", valorIdentificador));
                 } else {
@@ -66,13 +67,60 @@ public class Token {
                     i++;
                 }
                 tokens.add(new Token("Número", numero.toString()));
-            } else if ("=();{}".indexOf(charAtual) != -1) {  // Símbolos específicos
+            } 
+            
+            // Operadores lógicos e de comparação
+            else if (entrada.startsWith("&&", i)) {
+                tokens.add(new Token("OperadorLógico", "&&"));
+                i += 2;
+            } else if (entrada.startsWith("||", i)) {
+                tokens.add(new Token("OperadorLógico", "||"));
+                i += 2;
+            } else if (entrada.startsWith("!", i)) {
+                tokens.add(new Token("OperadorLógico", "!"));
+                i++;
+            } else if (entrada.startsWith("==", i)) {
+                tokens.add(new Token("OperadorComparacao", "=="));
+                i += 2;
+            } else if (entrada.startsWith("!=", i)) {
+                tokens.add(new Token("OperadorComparacao", "!="));
+                i += 2;
+            } else if (entrada.startsWith(">=", i)) {
+                tokens.add(new Token("OperadorComparacao", ">="));
+                i += 2;
+            } else if (entrada.startsWith("<=", i)) {
+                tokens.add(new Token("OperadorComparacao", "<="));
+                i += 2;
+            } else if (charAtual == '>') {
+                tokens.add(new Token("OperadorComparacao", ">"));
+                i++;
+            } else if (charAtual == '<') {
+                tokens.add(new Token("OperadorComparacao", "<"));
+                i++;
+            }
+            
+            // Símbolos específicos
+            else if ("=();{}".indexOf(charAtual) != -1) {  
                 tokens.add(new Token("Símbolo", String.valueOf(charAtual)));
                 i++;
-            } else {
-                i++;  // Ignora caracteres inválidos (ou lança erro dependendo do caso)
+            } 
+            
+            // Operadores matemáticos
+            else if ("+-*/%".indexOf(charAtual) != -1) {  
+                tokens.add(new Token("Operador", String.valueOf(charAtual)));
+                i++;
+            } 
+            else {
+                i++;  // Ignora caracteres inválidos
             }
         }
+    
+        // Log para imprimir a lista de tokens gerados
+        System.out.println("Tokens gerados:");
+        for (Token token : tokens) {
+            System.out.println(token);
+        }
+    
         return tokens;
     }
 }
