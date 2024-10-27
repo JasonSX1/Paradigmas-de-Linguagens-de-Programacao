@@ -4,7 +4,10 @@ import java.io.FileReader;
 
 public class Parser {
     public static void main(String[] args) {
-        String nomeArquivo = "C:\\Users\\Cliente\\Desktop\\IV Semestre\\Paradigmas-de-Linguagens-de-Programacao\\Trabalho Parser - PLP\\ParserJAVA\\src\\Programa1.plp"; // Path do arquivo de código-fonte
+        String pathNotebook = "C:\\Users\\Cliente\\Desktop\\IV Semestre\\Paradigmas-de-Linguagens-de-Programacao\\Trabalho Parser - PLP\\ParserJAVA\\src\\Programa1.plp";
+        String pathPC = "C:\\Users\\geiso\\Desktop\\IV Semestre\\Paradigmas-de-Linguagens-de-Programacao\\Trabalho Parser - PLP\\ParserJAVA\\src\\Programa1.plp";
+
+        String nomeArquivo = pathPC; // Path do arquivo de código-fonte
     
         StringBuilder entrada = new StringBuilder();
     
