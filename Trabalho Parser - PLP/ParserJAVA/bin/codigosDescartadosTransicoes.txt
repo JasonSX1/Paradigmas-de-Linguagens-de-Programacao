@@ -1,0 +1,37 @@
+    // private Estado processarComandoPrint(Estado estadoInicial, Token token) {
+    // switch (estadoInicial) {
+    // case q8: // Comando print
+    // if (token.getValor().equals("(")) {
+    // return Estado.q9; // Parêntese de abertura
+    // } else if (Character.isLetter(token.getValor().charAt(0))) {
+    // return Estado.q10; // Print sem parênteses
+    // }
+    // break;
+
+    // case q9:
+    // return Estado.q10; // Recebe a expressão a ser impressa
+
+    // case q10:
+    // if (token.getValor().equals(")")) {
+    // return Estado.q11; // Parêntese de fechamento
+    // } else if (token.getValor().equals("\n")) {
+    // return Estado.q0; // Print sem parênteses, finalizado por quebra de linha
+    // }
+    // break;
+
+    // case q11:
+    // if (token.getValor().equals("\n")) {
+    // return Estado.q0; // Final do comando print
+    // }
+    // break;
+
+    // default:
+    // return Estado.qErro; // Estado inválido
+    // }
+
+    // return Estado.qErro;
+    // }
+
+    ____________________________________________________________________________________________________________________________
+
+    
