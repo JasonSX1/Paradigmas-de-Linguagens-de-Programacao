@@ -104,7 +104,23 @@ public class Transicoes {
                 break;
 
             case q8: // Comando print
-                return processarComandoPrint(estado, token);
+                if (token.getValor().equals("(")) {
+                    return Estado.q9; // Parêntese de abertura
+                } else if (Character.isLetter(token.getValor().charAt(0))) {
+                    return Estado.q10; // Print sem parênteses
+                }
+                break;
+
+            case q9:
+                return Estado.q10; // Recebe a expressão a ser impressa
+
+            case q10:
+                if (token.getValor().equals(")")) {
+                    return Estado.q11; // Parêntese de fechamento
+                } else if (token.getValor().equals("\n")) {
+                    return Estado.q0; // Print sem parênteses, finalizado por quebra de linha
+                }
+                break;
 
             case q12: // Comando if
                 if (token.getValor().equals("(")) {
@@ -112,8 +128,23 @@ public class Transicoes {
                 }
                 break;
 
-            case q13: // Dentro da condição do if
-                return processarExpressaoAte(estado, token, ")");
+            case q13: // Processamento da expressao matematica ou logica do if
+                if (token.getTipo().equals("Número") || token.getTipo().equals("Identificador")) {
+                    return Estado.q13; // Continua recebendo a expressão
+                } else if (token.getTipo().equals("Operador")) {
+                    return Estado.q13; // Continua para um operador matemático
+                } else if (token.getTipo().equals("OperadorLogico")) {
+                    return Estado.q13; // Continua para um operador lógico
+                } else if (token.getTipo().equals("OperadorComparacao")) {
+                    return Estado.q13; // Continua para um operador de comparação
+                } else if (token.getValor().equals("\n")) {
+                    return Estado.q13; // Possivel quebra de linha em bloco de instrução do if, deve continuar
+                                       // recebendo instruções
+                } else if (token.getValor().equals(")")) {
+                    return Estado.q14; // Fecha a condição e vai para o próximo estado
+                } else {
+                    return Estado.qErro; // Qualquer outro token fora da expressão gera erro
+                }
 
             case q14: // Após a condição do if
                 if (token.getValor().equals("{")) {
@@ -211,33 +242,68 @@ public class Transicoes {
 
     // Processa tokens até encontrar o delimitador específico
     private Estado processarExpressaoAte(Estado estadoAtual, Token token, String delimitador) {
-        while (!token.getValor().equals(delimitador)) {
-            estadoAtual = transitar(estadoAtual, token);
-            if (estadoAtual == Estado.qErro) {
-                return Estado.qErro;
+        while (token != null && !token.getValor().equals(delimitador)) {
+            // Implementa lógica específica de processamento aqui, sem chamar transitar
+            switch (estadoAtual) {
+                case q3:
+                    // Lógica de declaração de variável
+                    if (token.getTipo().equals("Identificador")) {
+                        estadoAtual = Estado.q3; // Mantém no estado de declaração de variável
+                    } else {
+                        return Estado.qErro; // Retorna erro se não for um identificador válido
+                    }
+                    break;
+
+                case q4:
+                    // Lógica para processar expressões matemáticas, lógicas, etc.
+                    // (Você pode adicionar condições específicas aqui)
+                    if (token.getTipo().equals("Operador") || token.getTipo().equals("Número")) {
+                        estadoAtual = Estado.q4; // Continua no estado de expressão
+                    } else {
+                        return Estado.qErro; // Retorna erro se o token não for válido
+                    }
+                    break;
+
+                default:
+                    return Estado.qErro; // Retorna erro para qualquer outro caso inesperado
             }
+
+            // Obtém o próximo token para processar no loop
             token = getProximoToken();
         }
+
+        // Retorna o estado final após processar até o delimitador
         return estadoAtual;
     }
 
-    // Processa o comando print
     private Estado processarComandoPrint(Estado estadoInicial, Token token) {
-        Estado estadoAtual = estadoInicial;
-
-        if (token.getValor().equals("(")) {
-            estadoAtual = Estado.q9;
-        } else if (Character.isLetter(token.getValor().charAt(0))) {
-            estadoAtual = Estado.q10;
-        }
-
-        while (estadoAtual != Estado.q11 && estadoAtual != Estado.qErro) {
-            estadoAtual = transitar(estadoAtual, token);
-            if (estadoAtual == Estado.q11)
+        switch (estadoInicial) {
+            case q8: // Comando print
+                if (token.getValor().equals("(")) {
+                    return Estado.q9; // Parêntese de abertura
+                } else if (Character.isLetter(token.getValor().charAt(0))) {
+                    return Estado.q10; // Print sem parênteses
+                }
                 break;
+
+            case q9:
+                return Estado.q10; // Recebe a expressão a ser impressa
+
+            case q10:
+                if (Character.isLetter(token.getValor().charAt(0))) {
+                    return Estado.q11; // Consumindo o valor de x
+                } else if (token.getValor().equals(")")) {
+                    return Estado.q11; // Parêntese de fechamento
+                } else if (token.getValor().equals("\n")) {
+                    return Estado.q0; // Print sem parênteses, finalizado por quebra de linha
+                }
+                break;
+
+            default:
+                return Estado.qErro; // Estado inválido
         }
 
-        return estadoAtual == Estado.q11 ? Estado.q0 : Estado.qErro;
+        return Estado.qErro;
     }
 
     public boolean processar(String entrada) {
@@ -266,7 +332,7 @@ public class Transicoes {
         return false;
     }
 
-    public void logTokensProcessados(Token token){
+    public void logTokensProcessados(Token token) {
         System.out.println("\n=== Processando Token ===");
         System.out.println("Token: " + token.getValor() + ", Tipo: " + token.getTipo());
         System.out.println("=========================");
