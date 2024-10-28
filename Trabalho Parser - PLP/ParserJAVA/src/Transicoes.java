@@ -30,17 +30,21 @@ public class Transicoes {
                 } else if (token.getValor().equals("int") || token.getValor().equals("float")) {
                     return Estado.q3;
                 } else if (token.getValor().equals("print")) {
-                    return processarComandoPrint(Estado.q8, token);
+                    return Estado.q8; // Comando print
                 } else if (token.getValor().equals("if")) {
-                    return Estado.q12; // Vai diretamente para o estado q12 para processar o bloco if
+                    return Estado.q12; // Processa o bloco if
                 } else if (token.getValor().equals("while")) {
-                    return processarBlocoWhile(token);
+                    return Estado.q22; // Comando while
                 } else if (Character.isLetter(token.getValor().charAt(0))) {
                     return Estado.q5;
                 } else if (token.getValor().equals("\n")) {
                     return Estado.q0;
                 } else if (token.getTipo().equals("Comentário")) {
                     return Estado.q0;
+                } else if (token.getValor().equals("{")) {
+                    return Estado.q0;
+                } else if (token.getValor().equals("}")) {
+                    return verificarFechamentoDeBloco(getProximoToken());
                 } else {
                     return Estado.qErro;
                 }
@@ -94,12 +98,15 @@ public class Transicoes {
 
             case q7: // Expressão matemática ou lógica
                 if (token.getTipo().equals("Número") || token.getTipo().equals("Identificador")) {
-                    return Estado.q7;
-                } else if (token.getTipo().equals("Operador") || token.getTipo().equals("OperadorLogico")
-                        || token.getTipo().equals("OperadorComparacao")) {
-                    return Estado.q7;
+                    return Estado.q7; // Continua recebendo a expressão
+                } else if (token.getTipo().equals("Operador")) {
+                    return Estado.q7; // Continua para um operador matemático
+                } else if (token.getTipo().equals("OperadorLogico")) {
+                    return Estado.q7; // Continua para um operador lógico
+                } else if (token.getTipo().equals("OperadorComparacao")) {
+                    return Estado.q7; // Continua para um operador de comparação
                 } else if (token.getValor().equals("\n")) {
-                    return Estado.q0;
+                    return Estado.q0; // Final da atribuição ou expressão
                 }
                 break;
 
@@ -119,6 +126,12 @@ public class Transicoes {
                     return Estado.q11; // Parêntese de fechamento
                 } else if (token.getValor().equals("\n")) {
                     return Estado.q0; // Print sem parênteses, finalizado por quebra de linha
+                }
+                break;
+
+            case q11:
+                if (token.getValor().equals("\n")) {
+                    return Estado.q0; // Final do comando print
                 }
                 break;
 
@@ -148,7 +161,8 @@ public class Transicoes {
 
             case q14: // Após a condição do if
                 if (token.getValor().equals("{")) {
-                    return Estado.q15;
+                    // return Estado.q15; VERSÃO ORIGINAL
+                    return Estado.q0; // VERSÃO ALTERADA
                 }
                 break;
 
@@ -171,6 +185,48 @@ public class Transicoes {
 
             case q18: // Instruções do bloco else
                 return processarExpressaoAte(estado, token, "}");
+
+            case q19: // Instruções dentro do bloco else
+                return Estado.q20; // Processa as instruções do bloco else
+
+            case q20: // Verifica se o bloco else termina com "}"
+                if (token.getValor().equals("}")) {
+                    return Estado.q21; // Fim do bloco else
+                }
+                break;
+
+            case q22: // Comando while, verifica se abre com "("
+                if (token.getValor().equals("(")) {
+                    return Estado.q23; // Condição do while
+                }
+                break;
+
+            case q23: // Processa a condição do while (similar ao if)
+                if (token.getTipo().equals("Identificador") || token.getTipo().equals("Número")) {
+                    return Estado.q23; // Continua processando a expressão (variável ou número)
+                } else if (token.getTipo().equals("OperadorComparacao") || token.getTipo().equals("OperadorLogico")
+                        || token.getTipo().equals("OperadorMatematico")) {
+                    return Estado.q23; // Continua processando operadores (comparação, lógicos ou matemáticos)
+                } else if (token.getValor().equals(")")) {
+                    return Estado.q24; // Fecha a condição e vai para o próximo estado
+                } else {
+                    return Estado.qErro; // Qualquer outro token fora da expressão gera erro
+                }
+
+            case q24: // Após a condição do while, verifica se abre o bloco com "{"
+                if (token.getValor().equals("{")) {
+                    return Estado.q25; // Início do bloco while
+                }
+                break;
+
+            case q25: // Instruções dentro do bloco while
+                return Estado.q0; // Processa as instruções do bloco while
+
+            case q26: // Verifica se o bloco while termina com "}"
+                if (token.getValor().equals("}")) {
+                    return Estado.q27; // Fim do bloco while
+                }
+                break;
 
             default:
                 return Estado.qErro;
@@ -336,5 +392,17 @@ public class Transicoes {
         System.out.println("\n=== Processando Token ===");
         System.out.println("Token: " + token.getValor() + ", Tipo: " + token.getTipo());
         System.out.println("=========================");
+    }
+
+    // Novo método para verificar fechamento do bloco
+    private Estado verificarFechamentoDeBloco(Token tokenSeguinte) {
+        if (tokenSeguinte.getValor().equals("else")) {
+            logTokensProcessados(tokenSeguinte);
+            return Estado.q0; // Se o próximo token é "else", processa o bloco else
+        } else if (tokenSeguinte.getValor().equals("\n")) {
+            return Estado.q0; // Se não há mais nada após o bloco, o if/while é válido sem else
+        } else {
+            return transitar(Estado.q0, tokenSeguinte); // Continua a execução para o próximo token
+        }
     }
 }
