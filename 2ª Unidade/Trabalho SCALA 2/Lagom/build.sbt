@@ -2,13 +2,7 @@ name := "lagom-example"
 
 version := "1.0"
 
-scalaVersion := "2.13.8"
-
-lazy val root = (project in file("."))
-  .enablePlugins(LagomPlugin)
-  .settings(
-    name := "lagom-example",
-    libraryDependencies ++= Seq(
+scalaVersion := eies ++= Seq(
       lagom.scaladsl.api,                // Dependência para a API do Lagom
       lagom.scaladsl.client,             // Dependência para o cliente do Lagom
       lagom.scaladsl.testkit,            // Dependência para testes
