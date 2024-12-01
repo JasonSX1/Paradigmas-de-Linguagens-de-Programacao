@@ -1,24 +1,20 @@
 {
   "main": {
-    "id": "46cf43744e362ed0",
+    "id": "e314a656ed9c93ef",
     "type": "split",
     "children": [
       {
-        "id": "ac4a234f9d4e5a82",
+        "id": "2c793c3ff4f9b53c",
         "type": "tabs",
         "children": [
           {
-            "id": "5916b779ca62263d",
+            "id": "fe910eda196a4143",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Textos/Modelo Descritivo - Meu.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "Modelo Descritivo - Meu"
+              "title": "Nova aba"
             }
           }
         ]
@@ -27,15 +23,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "e5a8ba2423239dff",
+    "id": "f0fb64f210022bf9",
     "type": "split",
     "children": [
       {
-        "id": "08c5421b1e4290a2",
+        "id": "16983c4d610c4e05",
         "type": "tabs",
         "children": [
           {
-            "id": "86c34158463dc48d",
+            "id": "185d57bec4f6169a",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -47,7 +43,7 @@
             }
           },
           {
-            "id": "6942b36474b4f945",
+            "id": "805327addf48bb1a",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -64,7 +60,7 @@
             }
           },
           {
-            "id": "30a6245df4b7bab9",
+            "id": "0bf79e71a0f08804",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -77,24 +73,22 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
-    "id": "20319b57dc40d4e5",
+    "id": "1cbc5a6ccedb0326",
     "type": "split",
     "children": [
       {
-        "id": "a40b1b06aa3e9fef",
+        "id": "3aa858113800678a",
         "type": "tabs",
         "children": [
           {
-            "id": "0f2eb078b07822a5",
+            "id": "8e4a046252d40994",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Canvas.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -104,25 +98,24 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Links inversos para Canvas"
+              "title": "Backlinks"
             }
           },
           {
-            "id": "daf5a770fd2365e9",
+            "id": "e1e6aa22b63387ed",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Canvas.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Links de saída para Canvas"
+              "title": "Links de saída"
             }
           },
           {
-            "id": "65573cd18aa34e93",
+            "id": "18c8cdf16efd0e6c",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -135,15 +128,13 @@
             }
           },
           {
-            "id": "7409448a81df2b22",
+            "id": "0baca99e13f760ec",
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Canvas.canvas"
-              },
+              "state": {},
               "icon": "lucide-list",
-              "title": "Sumário de Canvas"
+              "title": "Sumário"
             }
           }
         ]
@@ -163,22 +154,6 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "5916b779ca62263d",
-  "lastOpenFiles": [
-    "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams/out",
-    "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams/export",
-    "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams",
-    "Lagom/project/target/streams/runtime/unmanagedClasspath/_global",
-    "Lagom/project/target/streams/runtime/unmanagedClasspath",
-    "Lagom/project/target/streams/runtime/managedClasspath/_global/streams/export",
-    "Lagom/project/target/streams/runtime/managedClasspath/_global/streams",
-    "Lagom/project/target/streams/runtime/managedClasspath/_global",
-    "Lagom/project/target/streams/runtime/managedClasspath",
-    "Lagom/project/target/streams/runtime/unmanagedJars/_global/streams/export",
-    "Lagom/project/target/streams/runtime/unmanagedJars/_global/streams",
-    "Canvas.canvas",
-    "Textos/Modelo Descritivo - Meu.md",
-    "Textos/Modelo Descritivo - GPT.md",
-    "Welcome.md"
-  ]
+  "active": "fe910eda196a4143",
+  "lastOpenFiles": []
 }
