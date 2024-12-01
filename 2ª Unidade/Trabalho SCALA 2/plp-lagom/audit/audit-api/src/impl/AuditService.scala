@@ -21,7 +21,7 @@ import scala.collection.immutable.Seq
 
 object AuditService {
 
-  // Commands
+  // Comandos
   trait CommandSerializable
   sealed trait Command extends CommandSerializable
   final case class StartAudit(auditId: String, sector: String, replyTo: ActorRef[Confirmation]) extends Command

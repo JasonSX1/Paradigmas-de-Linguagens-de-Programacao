@@ -1,66 +1,52 @@
-// class AuditServiceLoader extends LagomApplicationLoader {
-//   override def load(context: LagomApplicationContext): LagomApplication =
-//     new AuditServiceApplication(context) with JdbcPersistenceComponents
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
-//   override def describeService = Some(readDescriptor[AuditService])
-// }
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-package com.example.auditservice.impl
+@Component
+public class AuditServiceLoader {
 
-import com.example.auditservice.api.AuditService
-import com.lightbend.lagom.scaladsl.akka.discovery.AkkaDiscoveryComponents
-import com.lightbend.lagom.scaladsl.broker.kafka.LagomKafkaComponents
-import com.lightbend.lagom.scaladsl.devmode.LagomDevModeComponents
-import com.lightbend.lagom.scaladsl.persistence.slick.SlickPersistenceComponents
-import com.lightbend.lagom.scaladsl.server._
-import com.softwaremill.macwire._
-import play.api.db.HikariCPComponents
-import play.api.libs.ws.ahc.AhcWSComponents
-import akka.cluster.sharding.typed.scaladsl.Entity
-import com.lightbend.lagom.scaladsl.playjson.JsonSerializerRegistry
+    private static final Logger logger = LoggerFactory.getLogger(CarregadorDeEntidades.class);
 
-import scala.concurrent.ExecutionContext
+    // Map para armazenar os dados processados em memória
+    private final Map<String, List<String>> cacheDeEntidades = new HashMap<>();
 
-class AuditServiceLoader extends LagomApplicationLoader {
+    /**
+     * Carrega entidades em cache com base em dados fornecidos.
+     *
+     * @param tipo Tipo da entidade a ser carregada.
+     * @param entidades Lista de entidades.
+     */
+    public void carregarEntidades(String tipo, List<String> entidades) {
+        logger.info("Carregando entidades do tipo: {}", tipo);
 
-  override def load(context: LagomApplicationContext): LagomApplication =
-    new AuditServiceApplication(context) with AkkaDiscoveryComponents
+        // Simula o carregamento das entidades no cache
+        cacheDeEntidades.put(tipo, entidades);
 
-  override def loadDevMode(context: LagomApplicationContext): LagomApplication =
-    new AuditServiceApplication(context) with LagomDevModeComponents
-
-  override def describeService = Some(readDescriptor[AuditService])
-}
-
-trait AuditServiceComponents
-    extends LagomServerComponents
-    with SlickPersistenceComponents
-    with HikariCPComponents
-    with AhcWSComponents {
-
-  implicit def executionContext: ExecutionContext
-
-  // Bind the service that this server provides
-  override lazy val lagomServer: LagomServer =
-    serverFor[AuditService](wire[AuditServiceImpl])
-
-  // Register the JSON serializer registry
-  override lazy val jsonSerializerRegistry: JsonSerializerRegistry =
-    AuditSerializerRegistry
-
-  lazy val reportRepository: AuditReportRepository =
-    wire[AuditReportRepository]
-  readSide.register(wire[AuditReportProcessor])
-
-  // Initialize the sharding for the Audit aggregate
-  clusterSharding.init(
-    Entity(AuditService.typeKey) { entityContext =>
-      AuditService(entityContext)
+        logger.info("{} entidades carregadas no cache para o tipo {}", entidades.size(), tipo);
     }
-  )
-}
 
-abstract class AuditServiceApplication(context: LagomApplicationContext)
-    extends LagomApplication(context)
-    with AuditServiceComponents
-    with LagomKafkaComponents
+    /**
+     * Obtém entidades do cache com base no tipo.
+     *
+     * @param tipo Tipo da entidade a buscar.
+     * @return Lista de entidades ou null se não estiver no cache.
+     */
+    public List<String> obterEntidades(String tipo) {
+        logger.info("Buscando entidades do tipo: {}", tipo);
+        return cacheDeEntidades.get(tipo);
+    }
+
+    /**
+     * Remove um tipo de entidade do cache.
+     *
+     * @param tipo Tipo da entidade a ser removida.
+     */
+    public void removerEntidades(String tipo) {
+        logger.info("Removendo entidades do tipo: {}", tipo);
+        cacheDeEntidades.remove(tipo);
+    }
+}
