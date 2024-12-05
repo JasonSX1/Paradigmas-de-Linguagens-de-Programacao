@@ -1,5 +1,5 @@
 object teste {
-  main Class Pedidos(intm valor, status)
+  main Class Pedidos(int valor, status)
 }
 
 val pedidos = List (
