@@ -1,10 +1,12 @@
-version: '2'
+version: '3.8'  # Versão mais recente e compatível com serviços atuais
+
 services:
   zookeeper:
     image: wurstmeister/zookeeper
-    container_name: shopping_cart_zookeper
+    container_name: shopping_cart_zookeeper
     ports:
       - "2181:2181"
+
   kafka:
     image: wurstmeister/kafka:2.12-2.1.1
     container_name: shopping_cart_kafka
@@ -14,15 +16,18 @@ services:
       KAFKA_ADVERTISED_HOST_NAME: localhost
       KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
 
-  //Substituir postgres por mysql?
-  postgres:
-    image: postgres:latest
-    container_name: shopping_cart_postgres
+  mysql:
+    image: mysql:latest
+    container_name: audit_db_mysql
     environment:
-      - "TZ=Europe/Amsterdam"
-      - "POSTGRES_USER=shopping_cart"
-      - "POSTGRES_PASSWORD=shopping_cart"
-    
-    //Oq são as portas?
+      - "MYSQL_ROOT_PASSWORD=root"
+      - "MYSQL_DATABASE=audit_db"
+      - "MYSQL_USER=audit_user"
+      - "MYSQL_PASSWORD=audit_user_pass"
     ports:
-      - "5432:5432"  # credentials (shopping_cart:shopping_cart)
+      - "3306:3306"  # Mapeia a porta padrão do MySQL
+    volumes:
+      - mysql_data:/var/lib/mysql  # Persistência de dados
+
+volumes:
+  mysql_data:  # Define um volume para armazenar dados do MySQL

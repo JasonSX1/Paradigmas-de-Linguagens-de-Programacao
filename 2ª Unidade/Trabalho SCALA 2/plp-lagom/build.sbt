@@ -6,7 +6,7 @@ organization in ThisBuild := "com.example"
 scalaVersion in ThisBuild := "2.13.5"
 
 val postgresDriver             = "org.postgresql"                % "postgresql"                                    % "42.2.18"
-val macwire                    = "com.softwaremill.macwire"     %% "macros"                                        % "2.3.7" % "provided"
+val macwire                    = "com.softwremill.macwire"     %% "macros"                                        % "2.3.7" % "provided"
 val scalaTest                  = "org.scalatest"                %% "scalatest"                                     % "3.2.2" % Test
 val akkaDiscoveryKubernetesApi = "com.lightbend.akka.discovery" %% "akka-discovery-kubernetes-api"                 % "1.0.10"
 val lagomScaladslAkkaDiscovery = "com.lightbend.lagom"          %% "lagom-scaladsl-akka-discovery-service-locator" % lagomVersion

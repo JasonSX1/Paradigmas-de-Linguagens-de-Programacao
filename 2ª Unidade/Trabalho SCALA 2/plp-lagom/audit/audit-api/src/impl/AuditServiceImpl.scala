@@ -1,51 +1,34 @@
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+package com.example.auditservice.impl
 
-import java.util.List;
+import akka.actor.typed.ActorSystem
+import akka.stream.Materializer
+import javax.inject.Inject
+import org.slf4j.LoggerFactory
 
-@Service
-public class AuditServiceImpl {
+import scala.concurrent.{ExecutionContext, Future}
 
-    private static final Logger logger = LoggerFactory.getLogger(ServicoDeRelatorioImpl.class);
+class AuditServiceImpl @Inject()(loader: AuditServiceLoader)(implicit system: ActorSystem[_], mat: Materializer, ec: ExecutionContext) {
 
-    @Autowired
-    private CarregadorDeEntidades carregadorDeEntidades;
+  private val logger = LoggerFactory.getLogger(classOf[AuditServiceImpl])
 
-    /**
-     * Gera um relatório baseado nas entidades carregadas no cache.
-     *
-     * @param tipo Tipo das entidades a serem usadas para o relatório.
-     * @return Mensagem do relatório gerado.
-     */
-    public String gerarRelatorio(String tipo) {
-        logger.info("Iniciando a geração do relatório para o tipo: {}", tipo);
+  def gerarRelatorio(tipo: String): Future[String] = {
+    logger.info(s"Iniciando a geração do relatório para o tipo: $tipo")
 
-        // Busca as entidades carregadas no cache
-        List<String> entidades = carregadorDeEntidades.obterEntidades(tipo);
+    val entidades = loader.obterEntidades(tipo)
 
-        if (entidades == null || entidades.isEmpty()) {
-            logger.warn("Nenhuma entidade encontrada no cache para o tipo: {}", tipo);
-            return "Nenhuma entidade disponível para gerar o relatório.";
-        }
-
-        // Simulação da geração do relatório
-        StringBuilder relatorio = new StringBuilder("Relatório para o tipo ").append(tipo).append(":\n");
-        entidades.forEach(entidade -> relatorio.append("- ").append(entidade).append("\n"));
-
-        logger.info("Relatório gerado com sucesso para o tipo: {}", tipo);
-        return relatorio.toString();
+    if (entidades.isEmpty) {
+      logger.warn(s"Nenhuma entidade encontrada no cache para o tipo: $tipo")
+      Future.successful("Nenhuma entidade disponível para gerar o relatório.")
+    } else {
+      val relatorio = entidades.mkString(s"Relatório para o tipo $tipo:\n", "\n", "")
+      logger.info(s"Relatório gerado com sucesso para o tipo: $tipo")
+      Future.successful(relatorio)
     }
+  }
 
-    /**
-     * Limpa o cache para um tipo específico de entidade.
-     *
-     * @param tipo Tipo das entidades a serem removidas do cache.
-     */
-    public void limparCache(String tipo) {
-        logger.info("Limpando cache para o tipo: {}", tipo);
-        carregadorDeEntidades.removerEntidades(tipo);
-        logger.info("Cache limpo para o tipo: {}", tipo);
-    }
+  def limparCache(tipo: String): Unit = {
+    logger.info(s"Limpando cache para o tipo: $tipo")
+    loader.removerEntidades(tipo)
+    logger.info(s"Cache limpo para o tipo: $tipo")
+  }
 }

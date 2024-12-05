@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="2ec5d675-d3b9-4f2a-9b41-e085eb774a23" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/HelloLoader.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloService.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/HelloServiceImpl.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.sbt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/build.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/sync/copy-resource" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/inputs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/scala-2.12/sbt-1.0/update/update_cache_2.12/output" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/_global/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/csrConfiguration/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/csrProject/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/input_dsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/dependencyPositions/_global/streams/update_cache_2.12/output_dsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/ivyConfiguration/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/ivySbt/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/moduleSettings/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/projectDescriptors/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/scalaCompilerBridgeScope/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/_global/update/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/compileOutputs/previous" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/_global/_global/discoveredMainClasses/data" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/bspReporter/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compile/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/compileIncremental/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/copyResources/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/dependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/exportedProducts/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/externalDependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/incOptions/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/internalDependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/internalDependencyClasspath/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/managedClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/scalacOptions/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/unmanagedClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/unmanagedClasspath/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/compile/unmanagedJars/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/dependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/exportedProducts/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/externalDependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/fullClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/internalDependencyClasspath/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/managedClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/unmanagedClasspath/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/unmanagedClasspath/_global/streams/out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/target/streams/runtime/unmanagedJars/_global/streams/export" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart-api/src/main/scala/com/example/shoppingcart/api/ShoppingCartService.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/resources/application.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/resources/prod-application.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/scala/com/example/shoppingcart/impl/ShoppingCart.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/scala/com/example/shoppingcart/impl/ShoppingCartLoader.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/scala/com/example/shoppingcart/impl/ShoppingCartReportProcessor.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/scala/com/example/shoppingcart/impl/ShoppingCartReportRepository.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/main/scala/com/example/shoppingcart/impl/ShoppingCartServiceImpl.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/test/resources/logback.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/test/scala/com/example/shoppingcart/impl/ShoppingCartEntitySpec.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/test/scala/com/example/shoppingcart/impl/ShoppingCartEntityTypedTestkitSpec.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/1shopping-cart/src/test/scala/com/example/shoppingcart/impl/ShoppingCartReportSpec.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/2inventory-api/src/main/scala/com/example/inventory/api/InventoryService.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/2inventory/src/main/resources/application.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/2inventory/src/main/resources/prod-application.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/2inventory/src/main/scala/com/example/inventory/impl/InventoryLoader.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/2inventory/src/main/scala/com/example/inventory/impl/InventoryServiceImpl.scala" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/audit/audit-api/src/impl/AuditServiceImpl.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/audit/audit-api/src/impl/AuditServiceImpl.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/audit/audit-api/src/impl/AuditServiceLoader.scala" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/audit/audit-api/src/impl/AuditServiceLoader.scala" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/build.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/build.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/docker-compose.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/project/plugins.sbt" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/project/plugins.sbt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../plp-lagom/schemas/shopping-cart.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../plp-lagom/schemas/shopping-cart.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="2pcbPt2s3pl3nhAnVGCAg0mUX8I" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/geiso/Desktop/IV Semestre/Paradigmas-de-Linguagens-de-Programacao/2ª Unidade/Trabalho SCALA 2/TemplateModelo/project/project&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\geiso\Desktop\IV Semestre\Paradigmas-de-Linguagens-de-Programacao\2ª Unidade\Trabalho SCALA 2\TemplateModelo\project\project" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\geiso\Desktop\IV Semestre\Paradigmas-de-Linguagens-de-Programacao\2ª Unidade\Trabalho SCALA 2\TemplateModelo\project" />
+    </key>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="migrateConfigurationsNotificationShown" value="true" />
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.20224.300" />
+        <option value="bundled-js-predefined-d6986cc7102b-410509235cf1-JavaScript-IU-242.20224.300" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ec5d675-d3b9-4f2a-9b41-e085eb774a23" name="Changes" comment="" />
+      <created>1733068292155</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733068292155</updated>
+      <workItem from="1733068293594" duration="900000" />
+      <workItem from="1733101422907" duration="65000" />
+      <workItem from="1733278936577" duration="143000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
