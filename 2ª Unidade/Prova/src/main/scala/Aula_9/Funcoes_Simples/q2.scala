@@ -10,14 +10,17 @@ class Teste(val idade: Int){}
 //  }
 //
 //
-
-object Main {
-  def mult(x: Int): Boolean = x % 3 == 0
-
-  def main(args: Array[String]): Unit = {
-    val t = new Teste(20)
-    println(s"O resultado é: ${mult(t.idade)}")
-    //Retorna se a idade de Teste é multiplo de 3
-  }
-}
+//
+//package Aula_9.Funcoes_Simples
+//
+//
+//object mainq2 {
+//  def mult(x: Int): Boolean = x % 3 == 0
+//
+//  def main(args: Array[String]): Unit = {
+//    val t = new Teste(20)
+//    println(s"O resultado é: ${mult(t.idade)}")
+//    //Retorna se a idade de Teste é multiplo de 3
+//  }
+//}
 

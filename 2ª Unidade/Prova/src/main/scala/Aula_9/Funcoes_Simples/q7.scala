@@ -1,4 +1,5 @@
-//Exercício 07: Faça uma função pura que receba um ângulo a e retorne uma tupla contendo o seno da metade desse ângulo utilizando a identidade: sen(x/2) = +-(sqr([1-cos(x)]/2))
+//Exercício 07: Faça uma função pura que receba um ângulo a e retorne uma tupla contendo
+// o seno da metade desse ângulo utilizando a identidade: sen(x/2) = +-(sqr([1-cos(x)]/2))
 import scala.math._
 
 
