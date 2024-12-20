@@ -20,8 +20,19 @@
               "icon": "lucide-file",
               "title": "Modelo Descritivo - Meu"
             }
+          },
+          {
+            "id": "d675fa798c94b7bb",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {},
+              "icon": "lucide-file",
+              "title": "Nova aba"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -77,8 +88,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "20319b57dc40d4e5",
@@ -163,8 +173,9 @@
       "command-palette:Abrir paleta de comandos": false
     }
   },
-  "active": "5916b779ca62263d",
+  "active": "d675fa798c94b7bb",
   "lastOpenFiles": [
+    "Textos/Modelo Descritivo - Meu.md",
     "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams/out",
     "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams/export",
     "Lagom/project/target/streams/runtime/unmanagedClasspath/_global/streams",
@@ -175,9 +186,7 @@
     "Lagom/project/target/streams/runtime/managedClasspath/_global",
     "Lagom/project/target/streams/runtime/managedClasspath",
     "Lagom/project/target/streams/runtime/unmanagedJars/_global/streams/export",
-    "Lagom/project/target/streams/runtime/unmanagedJars/_global/streams",
     "Canvas.canvas",
-    "Textos/Modelo Descritivo - Meu.md",
     "Textos/Modelo Descritivo - GPT.md",
     "Welcome.md"
   ]
