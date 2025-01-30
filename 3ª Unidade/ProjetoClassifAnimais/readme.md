@@ -57,7 +57,6 @@ ProjetoClassifAnimais/
 │── README.md # Documentação do projeto 
 │── main.py # Código principal em Python 
 │── animais.pl # Base de conhecimento e regras em Prolog 
-└── requirements.txt # Dependências do projeto (pyswip)
 
 ---
 
