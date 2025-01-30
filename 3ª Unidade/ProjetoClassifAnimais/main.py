@@ -6,63 +6,67 @@ prolog.consult("animais.pl")  # Certifique-se de que este arquivo existe
 
 # Opções fixas para evitar erros de digitação
 TIPOS = ["mamifero", "reptil", "ave", "anfibio"]
-DIETAS = ["carnivoro", "herbivoro", "insetivoro"]
-HABITATS = ["savana", "floresta", "pantano", "montanhas", "antartida", "domestico"]
+DIETAS = ["carnivoro", "herbivoro", "insetivoro", "onivoro"]
+HABITATS = ["savana", "floresta", "pantano", "montanhas", "antartida", "domestico", "oceano", "caatinga", "cerrado"]
 
 def escolher_opcao(lista, mensagem):
     """Mostra um menu numérico para o usuário escolher uma opção."""
-    opcoes = lista + ["Não sei"]  # Adiciona "Não sei" automaticamente uma única vez
+    if "Não sei" not in lista:  # Evita duplicação de "Não sei"
+        lista = lista + ["Não sei"]
+
     print(f"\n{mensagem}")
     
-    for i, opcao in enumerate(opcoes, 1):
+    for i, opcao in enumerate(lista, 1):
         print(f"{i}. {opcao.capitalize()}")
-    
+
     while True:
         try:
             escolha = int(input("Escolha uma opção: "))
-            if 1 <= escolha <= len(lista):
-                return lista[escolha - 1]  # Retorna a opção escolhida
-            elif escolha == len(opcoes):  # Última opção ("Não sei")
+            if 1 <= escolha <= len(lista) - 1:  # Retorna a opção válida
+                return lista[escolha - 1]
+            elif escolha == len(lista):  # Última opção ("Não sei")
                 return None
         except ValueError:
             pass
         print("Opção inválida. Escolha um número da lista.")
-
+        
+def listar_todos_animais():
+    total_animais = len(list(prolog.query("animal(Nome, _, _, _)")))
+    print(f"\n Existem {total_animais} animais cadastrados no banco de dados, e eles são:")
+    animais = set(resultado['Nome'].capitalize() for resultado in prolog.query("animal(Nome, _, _, _)"))
+    if animais:
+        for nome in sorted(animais):
+            print(f"- {nome}")
+    else:
+        print("Nenhum animal encontrado.")
 
 def listar_animais_por_tipo():
     tipo = escolher_opcao(TIPOS, "Escolha o tipo de animal:")
     if tipo:
         print(f"\nAnimais do tipo {tipo}:")
-        for resultado in prolog.query(f"animal_por_categoria(Nome, {tipo})"):
-            print(f"- {resultado['Nome'].capitalize()}")
+        animais = sorted({resultado['Nome'].capitalize() for resultado in prolog.query(f"animal_por_categoria(Nome, {tipo})")})
+        for nome in animais:
+            print(f"- {nome}")
 
 def listar_animais_por_dieta():
     dieta = escolher_opcao(DIETAS, "Escolha a dieta do animal:")
     if dieta:
         print(f"\nAnimais com dieta {dieta}:")
-        for resultado in prolog.query(f"animal_por_dieta(Nome, {dieta})"):
-            print(f"- {resultado['Nome'].capitalize()}")
+        animais = sorted({resultado['Nome'].capitalize() for resultado in prolog.query(f"animal_por_dieta(Nome, {dieta})")})
+        for nome in animais:
+            print(f"- {nome}")
 
 def listar_animais_por_habitat():
     habitat = escolher_opcao(HABITATS, "Escolha o habitat do animal:")
     if habitat:
         print(f"\nAnimais que vivem em {habitat}:")
-        for resultado in prolog.query(f"animal_por_habitat(Nome, {habitat})"):
-            print(f"- {resultado['Nome'].capitalize()}")
+        animais = sorted({resultado['Nome'].capitalize() for resultado in prolog.query(f"animal_por_habitat(Nome, {habitat})")})
+        for nome in animais:
+            print(f"- {nome}")
 
-def adicionar_animal():
-    nome = input("Nome do animal: ").strip().lower()
-    tipo = escolher_opcao(TIPOS, "Escolha o tipo do animal:")
-    dieta = escolher_opcao(DIETAS, "Escolha a dieta do animal:")
-    habitat = escolher_opcao(HABITATS, "Escolha o habitat do animal:")
-
-    if tipo and dieta and habitat:
-        prolog.assertz(f"animal({nome}, {tipo}, {dieta}, terrestre)")
-        prolog.assertz(f"vive_em({nome}, {habitat})")
-        print(f"\n {nome.capitalize()} adicionado com sucesso!")
-
+# Modo "Akinator"
 def identificar_animal():
-    print("\n=== Modo Akinator ===")
+    print("\n=== Modo de Advinhação ===")
 
     respostas = {}
 
@@ -82,13 +86,13 @@ def identificar_animal():
                 respostas["tem_escamas"] = True
 
     # Pergunta se o animal vive na água
-    agua = escolher_opcao(["Sim", "Não", "Não sei"], "O animal vive na água?")
+    agua = escolher_opcao(["Sim", "Não"], "O animal vive na água?")
     if agua == "Sim":
         respostas["vive_na_agua"] = True
 
     # Pergunta sobre voo apenas se tiver penas
     if respostas.get("tem_penas"):
-        voa = escolher_opcao(["Sim", "Não", "Não sei"], "O animal pode voar?")
+        voa = escolher_opcao(["Sim", "Não"], "O animal pode voar?")
         if voa == "Sim":
             respostas["pode_voar"] = True
 
@@ -131,30 +135,32 @@ def identificar_animal():
     else:
         print("\n Nenhum animal encontrado com essas características.")
 
-
 def menu():
     while True:
         print("\n=== Sistema de Classificação de Animais ===")
-        print("1. Listar animais por tipo")
-        print("2. Listar animais por dieta")
-        print("3. Listar animais por habitat")
-        print("4. Adicionar um novo animal")
+        print("1. Listar todos os animais")
+        print("2. Listar animais por tipo")
+        print("3. Listar animais por dieta")
+        print("4. Listar animais por habitat")
         print("5. Advinhar um animal")
-        print("6. Sair")
+        print("6. Calcular ecossistema")
+        print("7. Sair")
 
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
-            listar_animais_por_tipo()
+            listar_todos_animais()
         elif opcao == "2":
-            listar_animais_por_dieta()
+            listar_animais_por_tipo()
         elif opcao == "3":
-            listar_animais_por_habitat()
+            listar_animais_por_dieta()
         elif opcao == "4":
-            adicionar_animal()
+            listar_animais_por_habitat()
         elif opcao == "5":
             identificar_animal()
         elif opcao == "6":
+            calcular_ecossistema()
+        elif opcao == "7":
             print("Saindo...")
             break
         else:
