@@ -135,6 +135,71 @@ def identificar_animal():
     else:
         print("\n Nenhum animal encontrado com essas características.")
 
+def calcular_ecossistema():
+    habitat = escolher_opcao(HABITATS, "Escolha o bioma para calcular o ecossistema:")
+    if habitat:
+        print(f"\n📊 Relatório do Ecossistema para {habitat.capitalize()}")
+
+        # Busca herbívoros, carnívoros e onívoros do bioma
+        herbivoros = set()
+        carnivoros = set()
+        onivoros = set()
+
+        # Processa cada animal na lista retornada pelo Prolog
+        for resultado in prolog.query(f"herbivoros_no_bioma({habitat}, Herbivoros)"):
+            if isinstance(resultado['Herbivoros'], list):  # Se for uma lista, itera sobre os itens
+                herbivoros.update(resultado['Herbivoros'])
+            else:
+                herbivoros.add(resultado['Herbivoros'])
+
+        for resultado in prolog.query(f"carnivoros_no_bioma({habitat}, Carnivoros)"):
+            if isinstance(resultado['Carnivoros'], list):
+                carnivoros.update(resultado['Carnivoros'])
+            else:
+                carnivoros.add(resultado['Carnivoros'])
+
+        for resultado in prolog.query(f"onivoros_no_bioma({habitat}, Onivoros)"):
+            if isinstance(resultado['Onivoros'], list):
+                onivoros.update(resultado['Onivoros'])
+            else:
+                onivoros.add(resultado['Onivoros'])
+
+        # Converte e ordena os nomes para exibição
+        herbivoros = sorted({nome.capitalize() for nome in herbivoros})
+        carnivoros = sorted({nome.capitalize() for nome in carnivoros})
+        onivoros = sorted({nome.capitalize() for nome in onivoros})
+
+        # Exibe os resultados
+        print("\n Herbívoros:")
+        if herbivoros:
+            for nome in herbivoros:
+                print(f"- {nome}")
+        else:
+            print("Nenhum herbívoro encontrado.")
+
+        print("\n Carnívoros:")
+        if carnivoros:
+            for nome in carnivoros:
+                print(f"- {nome}")
+        else:
+            print("Nenhum carnívoro encontrado.")
+
+        print("\n Onívoros:")
+        if onivoros:
+            for nome in onivoros:
+                print(f"- {nome}")
+        else:
+            print("Nenhum onívoro encontrado.")
+
+        # Verifica equilíbrio ecológico
+        num_herbivoros = len(herbivoros)
+        num_carnivoros = len(carnivoros)
+
+        if num_carnivoros > num_herbivoros:
+            print("\n Ecossistema em desequilíbrio: Muitos predadores para poucas presas!")
+        else:
+            print("\n Ecossistema equilibrado!")
+
 def menu():
     while True:
         print("\n=== Sistema de Classificação de Animais ===")

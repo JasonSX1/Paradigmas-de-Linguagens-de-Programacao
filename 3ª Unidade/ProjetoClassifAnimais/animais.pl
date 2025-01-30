@@ -18,9 +18,9 @@ animal(calango, reptil, insetivoro, terrestre).
 animal(periquito, ave, herbivoro, voador).
 animal(galinha, ave, onivoro, terrestre).
 animal(golfinho, mamifero, carnivoro, aquatico).
-animal(lobo-guara, mamifero, onivoro, terrestre).
+animal('lobo-guara', mamifero, onivoro, terrestre).
 animal(avestruz, ave, onivoro, terrestre).
-animal(peixe-palhaco, peixe, carnivoro, aquatico).
+animal('peixe-palhaco', peixe, carnivoro, aquatico).
 animal(coruja, ave, carnivoro, voador).
 animal(camaleao, reptil, insetivoro, terrestre).
 animal(salamandra, anfibio, insetivoro, aquatico).
@@ -44,7 +44,7 @@ bota_ovos(jacare).
 bota_ovos(pinguim).
 bota_ovos(tartaruga).
 bota_ovos(calango).
-bota_ovos(peixe-palhaco).
+bota_ovos('peixe-palhaco').
 bota_ovo(X) :- animal(X, ave, _, _).
 % Não coloquei todos os repteis pq os viviparos nao colocam ovos (algumas especies de cobra e lagartixas), assim como existem
 % os peixes que nao botam ovos .
@@ -71,10 +71,10 @@ vive_em(periquito, floresta).
 vive_em(galinha, domestico).
 vive_em(galinha, floresta).
 vive_em(golfinho, oceano).
-vive_em(lobo-guara, cerrado).
-vive_em(lobo-guara, floresta).
+vive_em('lobo-guara', cerrado).
+vive_em('lobo-guara', floresta).
 vive_em(avestruz, savana).
-vive_em(peixe-palhaco, oceano).
+vive_em('peixe-palhaco', oceano).
 vive_em(camaleao, floresta).
 vive_em(coruja, floresta).
 vive_em(coruja, montanhas).
@@ -142,11 +142,12 @@ equilibrio_ecossistema(Bioma) :-
     onivoros_no_bioma(Bioma, Onivoros),
     length(Herbivoros, NumHerbivoros),
     length(Carnivoros, NumCarnivoros),
-    length(Onivoros, NumOnivoros),
-    write('Relatório do Ecossistema para '), write(Bioma), nl,
-    write('Herbívoros: '), write(Herbivoros), nl,
-    write('Carnívoros: '), write(Carnivoros), nl,
-    write('Onívoros: '), write(Onivoros), nl,
+    % Removida a variável não utilizada (NumOnivoros)
+    write(' Relatório do Ecossistema para '), write(Bioma), nl,
+    write(' Herbívoros: '), write(Herbivoros), nl,
+    write(' Carnívoros: '), write(Carnivoros), nl,
+    write(' Onívoros: '), write(Onivoros), nl,
     (NumCarnivoros > NumHerbivoros ->
-        write('Ecossistema desequilibrado: Muitos predadores para poucas presas!'), nl
-        ; write('Ecossistema equilibrado!'), nl).
+        write(' Ecossistema desequilibrado: Muitos predadores para poucas presas!'), nl
+        ; write(' Ecossistema equilibrado!'), nl).
+
