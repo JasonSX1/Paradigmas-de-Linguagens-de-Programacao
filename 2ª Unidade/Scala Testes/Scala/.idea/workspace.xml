@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="460b5b66-baf2-4f57-8563-377b74f1ae03" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Scala Worksheet" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2phuBpm1qZ8OncROoTOcbpfEknf" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.FuncoesArmEmVariaveis.Q01.executor": "Run",
+    "Application.FuncoesArmEmVariaveis.Q02.executor": "Run",
+    "Application.FuncoesArmEmVariaveis.Q04.executor": "Run",
+    "Application.FuncoesPassadasComoParametros.Q03.executor": "Run",
+    "Application.FuncoesRetornadas.Q01.executor": "Run",
+    "Application.FuncoesRetornadas.Q02.executor": "Run",
+    "Application.Main.executor": "Run",
+    "Application.Q01.executor": "Run",
+    "Application.Q01App.executor": "Run",
+    "Application.Q02.executor": "Run",
+    "Application.Q03.executor": "Run",
+    "Application.Q04.executor": "Run",
+    "Application.Q05.executor": "Run",
+    "Application.Q06.executor": "Run",
+    "Application.Q07.executor": "Run",
+    "Application.Q08.executor": "Run",
+    "Application.Q09.executor": "Run",
+    "Application.Q10.executor": "Run",
+    "Application.Q11.executor": "Run",
+    "Application.Q12.executor": "Run",
+    "Application.Q13.executor": "Run",
+    "Application.Q14.executor": "Run",
+    "Application.Q15.executor": "Run",
+    "Application.Q16.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="FuncoesRetornadas.Q01" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="FuncoesRetornadas.Q01" />
+      <module name="Scala" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuncoesRetornadas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="FuncoesRetornadas.Q02" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="FuncoesRetornadas.Q02" />
+      <module name="Scala" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuncoesRetornadas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="FuncoesAltaOrdem.Main" />
+      <module name="Scala" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuncoesAltaOrdem.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Q03" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="FuncoesRetornadas.Q03" />
+      <module name="Scala" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuncoesRetornadas.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Q04" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="FuncoesPassadasComoParametros.Q04" />
+      <module name="Scala" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="FuncoesPassadasComoParametros.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Q03" />
+        <item itemvalue="Application.FuncoesRetornadas.Q02" />
+        <item itemvalue="Application.FuncoesRetornadas.Q01" />
+        <item itemvalue="Application.Q04" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ScalaProjectSettings">
+    <option name="migrateConfigurationsNotificationShown" value="true" />
+    <option name="scala3DisclaimerShown" value="true" />
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.15989.150" />
+        <option value="bundled-js-predefined-1d06a55b98c1-91d5c284f522-JavaScript-IU-241.15989.150" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="460b5b66-baf2-4f57-8563-377b74f1ae03" name="Changes" comment="" />
+      <created>1733230496783</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1733230496783</updated>
+      <workItem from="1733422328066" duration="549000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
