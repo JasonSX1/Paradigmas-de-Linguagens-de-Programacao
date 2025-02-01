@@ -60,7 +60,7 @@ ProjetoClassifAnimais/
 
 ---
 
-## **Como Executar**
+## **Como Executar**    
 ### **1. Instalar Dependências**
 Certifique-se de ter o **Python 3** e o **SWI-Prolog** instalados.  
 Depois, instale a biblioteca `pyswip`:
