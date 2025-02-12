@@ -4,10 +4,17 @@ from pyswip import Prolog
 prolog = Prolog()
 prolog.consult("fatos_regras.pl")  # Carrega o arquivo com as regras
 
-# Opções fixas para evitar erros de digitação
-HABITATS = ["floresta", "urbano", "aquatico", "montanha", "savana", "campo", "pantanal", "oceano", "cerrado", "deserto"]
-COMPORTAMENTOS = ["solitario", "social", "em_bando", "em_grupo", "independente", "noturno", "cardume"]
-DIETAS = ["carnivoro", "herbivoro", "onivoro", "frugivoro", "insetivoro"]
+def obter_caracteristicas(prolog, consulta):
+    """Consulta o Prolog e retorna uma lista de características."""
+    resultado = list(prolog.query(consulta))
+    if resultado:
+        return resultado[0][list(resultado[0].keys())[0]]  # Pega o primeiro valor retornado
+    return []
+
+# Obtém as listas diretamente do Prolog
+HABITATS = obter_caracteristicas(prolog, "listar_habitats(Habitats)")
+COMPORTAMENTOS = obter_caracteristicas(prolog, "listar_comportamentos(Comportamentos)")
+DIETAS = obter_caracteristicas(prolog, "listar_dietas(Dietas)")
 
 def escolher_opcoes(lista, mensagem):
     """Mostra um menu numérico para o usuário escolher múltiplas opções."""

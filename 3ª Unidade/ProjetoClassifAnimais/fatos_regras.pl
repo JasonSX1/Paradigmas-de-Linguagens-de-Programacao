@@ -56,3 +56,17 @@ calcular_probabilidade(Respostas, Caracteristicas, Probabilidade) :-
     contar_correspondencias(Respostas, Caracteristicas, Match),
     Probabilidade is (Match / Total) * 100. % Cálculo da probabilidade
 
+% Retorna todos os habitats únicos na base de conhecimento
+listar_habitats(Habitats) :- 
+    findall(H, (animal(_, Caracteristicas), member(habitat(H), Caracteristicas)), Lista),
+    sort(Lista, Habitats).
+
+% Retorna todos os comportamentos únicos
+listar_comportamentos(Comportamentos) :- 
+    findall(C, (animal(_, Caracteristicas), member(comportamento(C), Caracteristicas)), Lista),
+    sort(Lista, Comportamentos).
+
+% Retorna todas as dietas únicas
+listar_dietas(Dietas) :- 
+    findall(D, (animal(_, Caracteristicas), member(dieta(D), Caracteristicas)), Lista),
+    sort(Lista, Dietas).
