@@ -1,6 +1,6 @@
 from pyswip import Prolog
 
-# 📌 Inicialização do Prolog
+# Inicialização do Prolog
 prolog = Prolog()
 prolog.consult("fatos_regras.pl")  # Carrega o arquivo com as regras
 
@@ -29,7 +29,7 @@ def escolher_opcoes(lista, mensagem):
 
 def identificar_animal():
     """Obtém características do usuário e consulta o Prolog."""
-    print("\n🔎 **Identificação de Animal**")
+    print("\n**Identificação de Animal**")
     
     habitat = escolher_opcoes(HABITATS, "Escolha o habitat do animal:")
     comportamento = escolher_opcoes(COMPORTAMENTOS, "Escolha o comportamento do animal:")
@@ -37,35 +37,45 @@ def identificar_animal():
 
     # Monta a lista de características
     respostas = habitat + comportamento + dieta
-    respostas_formatadas = "[" + ", ".join([f"'{r}'" for r in respostas]) + "]"
-
-    # 🛠️ Debug: Verificar a consulta que será enviada ao Prolog
-    print(f"\n🛠️ DEBUG - Consulta formatada: identificar_animal({respostas_formatadas}, AnimaisComProbabilidades)")
+    respostas_formatadas = "[" + ", ".join(respostas) + "]"
 
     # Consulta ao Prolog
     consulta = f"identificar_animal({respostas_formatadas}, AnimaisComProbabilidades)"
-    resultado = list(prolog.query(consulta))
 
-    # 🛠️ Debug: Verificar a resposta bruta do Prolog
-    print(f"\n🛠️ DEBUG - Resposta Prolog: {resultado}")
+    resultado = list(prolog.query(consulta))
 
     if resultado and "AnimaisComProbabilidades" in resultado[0]:
         animais_probabilidades = resultado[0]["AnimaisComProbabilidades"]
 
-        print("\n🎯 **Animais prováveis:**")
-        for item in animais_probabilidades:
-            if isinstance(item, tuple) and len(item) == 2:
-                animal, probabilidade = item
-                print(f"- {animal.capitalize()} (Probabilidade: {probabilidade:.2f}%)")
+    print("\n **Animais prováveis:**")
+    for item in animais_probabilidades:
+        # Limpar espaços em branco e caracteres indesejados
+        item = item.strip().strip(",")  # Remove a vírgula inicial e espaços extras
+
+        # Remover parênteses e dividir pelo último espaço para separar o animal da probabilidade
+        if "(" in item and ")" in item:
+            item = item.replace("(", "").replace(")", "")  # Remove parênteses
+            partes = item.rsplit(",", 1)  # Divide pelo último espaço encontrado
+            
+            if len(partes) == 2:
+                animal = partes[0].strip()
+                try:
+                    probabilidade = float(partes[1].strip())  # Converte a probabilidade para float
+                    if probabilidade > 0:  # Só exibe se a probabilidade for maior que 0.00%
+                        print(f"- {animal.capitalize()} (Probabilidade: {probabilidade:.2f}%)")
+                except ValueError:
+                    print(f" Erro ao processar probabilidade para: {item}")
             else:
-                print(f"⚠️ Formato inesperado encontrado: {item}")
-    else:
-        print("\n⚠️ Nenhum animal encontrado com essas características.")
+                print(f" Formato inesperado encontrado: {item}")
+        else:
+            print(f" Formato inesperado encontrado: {item}")
+
+
 
 def menu():
     """Menu principal do sistema."""
     while True:
-        print("\n=== 🦁 **Sistema de Classificação de Animais** ===")
+        print("\n=== **Sistema de Classificação de Animais** ===")
         print("1. Identificar um animal")
         print("2. Sair")
 
