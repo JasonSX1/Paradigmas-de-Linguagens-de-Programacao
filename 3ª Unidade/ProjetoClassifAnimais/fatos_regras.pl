@@ -15,7 +15,7 @@ animal(flamingo, [habitat(pantanal), comportamento(em_grupo), dieta(herbivoro)])
 animal(gato, [habitat(urbano), comportamento(independente), dieta(carnivoro)]).
 animal(golfinho, [habitat(oceano), comportamento(social), dieta(carnivoro)]).
 animal(guaxinim, [habitat(urbano), comportamento(noturno), dieta(onivoro)]).
-animal('jacaré', [habitat(pantanal), comportamento(solitario), dieta(carnivoro)]).
+animal(jacare, [habitat(pantanal), comportamento(solitario), dieta(carnivoro)]).
 animal(leao, [habitat(savana), comportamento(social), dieta(carnivoro)]).
 animal(lobo, [habitat(floresta), comportamento(em_bando), dieta(carnivoro)]).
 animal(ornitorrinco, [habitat(australia), comportamento(solitario), dieta(onivoro)]).
@@ -55,3 +55,4 @@ calcular_probabilidade(Respostas, Caracteristicas, Probabilidade) :-
     length(Respostas, Total), % Quantidade de características fornecidas
     contar_correspondencias(Respostas, Caracteristicas, Match),
     Probabilidade is (Match / Total) * 100. % Cálculo da probabilidade
+
