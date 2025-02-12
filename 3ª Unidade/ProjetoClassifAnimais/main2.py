@@ -1,92 +1,104 @@
 from pyswip import Prolog
 
-# Inicialização do Prolog
-prolog = Prolog()
+prolog = Prolog() # Inicialização do Prolog
 prolog.consult("fatos_regras.pl")  # Carrega o arquivo com as regras
 
 def obter_caracteristicas(prolog, consulta):
     """Consulta o Prolog e retorna uma lista de características."""
     resultado = list(prolog.query(consulta))
     if resultado:
-        return resultado[0][list(resultado[0].keys())[0]]  # Pega o primeiro valor retornado
-    return []
+        lista = resultado[0][list(resultado[0].keys())[0]]
+        return [item.replace("_", " ") for item in lista] + ["Não sei"]
+    return ["Não sei"]  # Se der erro, retorna apenas "Não sei"
 
-# Obtém as listas diretamente do Prolog
+# Obtém listas dinamicamente do Prolog
 HABITATS = obter_caracteristicas(prolog, "listar_habitats(Habitats)")
 COMPORTAMENTOS = obter_caracteristicas(prolog, "listar_comportamentos(Comportamentos)")
 DIETAS = obter_caracteristicas(prolog, "listar_dietas(Dietas)")
 
 def escolher_opcoes(lista, mensagem):
-    """Mostra um menu numérico para o usuário escolher múltiplas opções."""
+    """Mostra um menu numérico para o usuário escolher uma opção válida."""
     while True:
         print(f"\n{mensagem}")
-        
+        print("0. Voltar")  # Opção para voltar
         for i, opcao in enumerate(lista, 1):
             print(f"{i}. {opcao.capitalize()}")
 
-        escolhas = input("Escolha o número das características: ").strip()
-        if not escolhas:  # Verifica se a entrada está vazia
-            print("Entrada não pode ser vazia! Tente novamente.")
-            continue
+        escolha = input("Escolha uma opção: ").strip()
 
-        try:
-            indices = [int(i) for i in escolhas.split(",") if i.strip().isdigit()]
-            opcoes_escolhidas = [lista[i - 1] for i in indices if 1 <= i <= len(lista)]
-            
-            if opcoes_escolhidas:  # Verifica se pelo menos uma opção foi escolhida
-                return opcoes_escolhidas
-            else:
-                print("Nenhuma opção válida selecionada! Tente novamente.")
+        if escolha == "0":
+            return None  # Retorna None para indicar que o usuário quer voltar
         
-        except ValueError:
-            print("Entrada inválida! Digite apenas números separados por vírgula.")
+        if escolha.isdigit():
+            indice = int(escolha)
+            if 1 <= indice <= len(lista):
+                return lista[indice - 1]  # Retorna a opção escolhida
 
+        print("Entrada inválida! Escolha um número válido.")
 
 def identificar_animal():
     """Obtém características do usuário e consulta o Prolog."""
-    print("\n**Identificação de Animal**")
-    
-    habitat = escolher_opcoes(HABITATS, "Escolha o habitat do animal:")
-    comportamento = escolher_opcoes(COMPORTAMENTOS, "Escolha o comportamento do animal:")
-    dieta = escolher_opcoes(DIETAS, "Escolha a dieta do animal:")
+    print("\n=== Identificação de Animal ===")
 
-    # Monta a lista de características
-    respostas = habitat + comportamento + dieta
-    respostas_formatadas = "[" + ", ".join(respostas) + "]"
+    habitat = escolher_opcoes(HABITATS, "Escolha o habitat do animal:")
+    if habitat is None: return  # Se o usuário escolher voltar, sai da função
+
+    comportamento = escolher_opcoes(COMPORTAMENTOS, "Escolha o comportamento do animal:")
+    if comportamento is None: return  
+
+    dieta = escolher_opcoes(DIETAS, "Escolha a dieta do animal:")
+    if dieta is None: return  
+
+    # Filtra "Não sei" para não enviar valores inválidos ao Prolog
+    respostas = [habitat, comportamento, dieta]
+    respostas = [r for r in respostas if r != "Não sei"]  # Remove "Não sei"
+
+    if not respostas:  # Se todas as respostas forem "Não sei"
+        print("\n Você não selecionou nenhuma característica válida.")
+        return
+    
+    # Substituir espaços por underscores e adicionar aspas para evitar erro no Prolog
+    respostas_formatadas = "[" + ", ".join([f"'{r.replace(' ', '_')}'" for r in respostas]) + "]"
 
     # Consulta ao Prolog
     consulta = f"identificar_animal({respostas_formatadas}, AnimaisComProbabilidades)"
-
-    resultado = list(prolog.query(consulta))
+    
+    try:
+        resultado = list(prolog.query(consulta))
+    except Exception as e:
+        print(f"\n Erro ao consultar o Prolog: {e}")
+        return
 
     if resultado and "AnimaisComProbabilidades" in resultado[0]:
         animais_probabilidades = resultado[0]["AnimaisComProbabilidades"]
+    else:
+        animais_probabilidades = []
 
-    print("\n **Animais prováveis:**")
+    print("\n=== Animais prováveis ===")
+    if not animais_probabilidades:
+        print("Nenhum animal encontrado com essas características.")
+        return
+
     for item in animais_probabilidades:
-        # Limpar espaços em branco e caracteres indesejados
-        item = item.strip().strip(",")  # Remove a vírgula inicial e espaços extras
+        item = item.strip().strip(",")  # Remove espaços extras e vírgulas indesejadas
 
-        # Remover parênteses e dividir pelo último espaço para separar o animal da probabilidade
-        if "(" in item and ")" in item:
-            item = item.replace("(", "").replace(")", "")  # Remove parênteses
-            partes = item.rsplit(",", 1)  # Divide pelo último espaço encontrado
-            
-            if len(partes) == 2:
-                animal = partes[0].strip()
-                try:
-                    probabilidade = float(partes[1].strip())  # Converte a probabilidade para float
-                    if probabilidade > 0:  # Só exibe se a probabilidade for maior que 0.00%
-                        print(f"- {animal.capitalize()} (Probabilidade: {probabilidade:.2f}%)")
-                except ValueError:
-                    print(f" Erro ao processar probabilidade para: {item}")
-            else:
-                print(f" Formato inesperado encontrado: {item}")
-        else:
-            print(f" Formato inesperado encontrado: {item}")
+        # Remove parênteses da string recebida pela query no prolog
+        if item.startswith("(") and item.endswith(")"):
+            item = item[1:-1]  # Removendo o primeiro e o último caractere
+
+        partes = item.rsplit(",", 1)  # Divide a string na última vírgula, para separar o animal da porcentagem
+
+        if len(partes) == 2:
+            animal = partes[0].strip()
+            try:
+                probabilidade = float(partes[1].strip())  # Converte a probabilidade para float
+                if probabilidade > 0:  # Apenas exibe animais com probabilidade maior que 0%
+                    print(f"- {animal.capitalize()} (Probabilidade: {probabilidade:.2f}%)")
+            except ValueError:
+                continue  # Ignora qualquer erro de conversão silenciosamente
 
 def menu():
-    """Menu principal do sistema."""
+    "Menu do programa."
     while True:
         print("\n=== **Sistema de Classificação de Animais** ===")
         print("1. Identificar um animal")
