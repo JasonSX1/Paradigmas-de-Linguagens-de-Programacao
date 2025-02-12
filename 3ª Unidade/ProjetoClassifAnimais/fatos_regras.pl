@@ -30,7 +30,6 @@ animal(urso, [habitat(floresta), comportamento(solitario), dieta(onivoro)]).
 animal(urso_polar, [habitat(polo_norte), comportamento(solitario), dieta(carnivoro)]).
 animal(zebra, [habitat(savana), comportamento(em_grupo), dieta(herbivoro)]).
 
-
 % Regras para calcular a correspondência de características
 % Conta quantas características fornecidas aparecem na lista de um animal
 contar_correspondencias(CaracteristicasUsuario, CaracteristicasAnimal, N) :-

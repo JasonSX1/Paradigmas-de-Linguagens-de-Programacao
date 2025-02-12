@@ -97,22 +97,65 @@ def identificar_animal():
             except ValueError:
                 continue  # Ignora qualquer erro de conversão silenciosamente
 
+
+def listar_todos_animais():
+    """Lista todos os animais cadastrados na base de dados com suas características."""
+    animais = list(prolog.query("animal(Nome, Caracteristicas)"))  # Busca nome e características
+
+    if not animais:
+        print("\nNenhum animal encontrado no banco de dados.")
+        return
+
+    print(f"\nExistem {len(animais)} animais cadastrados:\n")
+
+    for resultado in animais:
+        nome = resultado["Nome"].capitalize()
+        caracteristicas = resultado["Caracteristicas"] 
+
+        # Inicializa valores padrão caso não sejam encontrados
+        habitat = "Desconhecido"
+        comportamento = "Desconhecido"
+        dieta = "Desconhecido"
+
+        # Extraindo os valores
+        for c in caracteristicas:
+            if "(" in c and ")" in c:  # Garante que a string tem um formato válido
+                chave, valor = c.split("(", 1)  # Divide na primeira ocorrência de "("
+                valor = valor.rstrip(")")  # Remove o ")" do final
+
+                if chave == "habitat":
+                    habitat = valor.replace("_", " ")
+                elif chave == "comportamento":
+                    comportamento = valor.replace("_", " ")
+                elif chave == "dieta":
+                    dieta = valor.replace("_", " ")
+
+        print(f"- {nome}")
+        print(f"  Habitat: {habitat.capitalize()}")
+        print(f"  Comportamento: {comportamento.capitalize()}")
+        print(f"  Dieta: {dieta.capitalize()}")
+        print()
+
 def menu():
-    "Menu do programa."
+    """Menu do programa."""
     while True:
-        print("\n=== **Sistema de Classificação de Animais** ===")
+        print("\n=== Sistema de Classificação de Animais ===")
         print("1. Identificar um animal")
-        print("2. Sair")
+        print("2. Listar todos os animais")
+        print("3. Sair")
 
         opcao = input("Escolha uma opção: ")
 
         if opcao == "1":
             identificar_animal()
         elif opcao == "2":
+            listar_todos_animais()
+        elif opcao == "3":
             print("Saindo...")
             break
         else:
             print("Opção inválida, tente novamente!")
+
 
 # Executa o menu principal
 if __name__ == "__main__":
