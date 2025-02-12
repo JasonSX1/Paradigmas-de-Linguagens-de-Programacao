@@ -11,21 +11,29 @@ DIETAS = ["carnivoro", "herbivoro", "onivoro", "frugivoro", "insetivoro"]
 
 def escolher_opcoes(lista, mensagem):
     """Mostra um menu numérico para o usuário escolher múltiplas opções."""
-    print(f"\n{mensagem}")
-    
-    for i, opcao in enumerate(lista, 1):
-        print(f"{i}. {opcao.capitalize()}")
+    while True:
+        print(f"\n{mensagem}")
+        
+        for i, opcao in enumerate(lista, 1):
+            print(f"{i}. {opcao.capitalize()}")
 
-    escolhas = input("Escolha os números das características separadas por vírgula: ")
-    opcoes_escolhidas = []
-    
-    try:
-        indices = [int(i) for i in escolhas.split(",")]
-        opcoes_escolhidas = [lista[i - 1] for i in indices if 1 <= i <= len(lista)]
-    except ValueError:
-        print("Entrada inválida! Tente novamente.")
+        escolhas = input("Escolha o número das características: ").strip()
+        if not escolhas:  # Verifica se a entrada está vazia
+            print("Entrada não pode ser vazia! Tente novamente.")
+            continue
 
-    return opcoes_escolhidas
+        try:
+            indices = [int(i) for i in escolhas.split(",") if i.strip().isdigit()]
+            opcoes_escolhidas = [lista[i - 1] for i in indices if 1 <= i <= len(lista)]
+            
+            if opcoes_escolhidas:  # Verifica se pelo menos uma opção foi escolhida
+                return opcoes_escolhidas
+            else:
+                print("Nenhuma opção válida selecionada! Tente novamente.")
+        
+        except ValueError:
+            print("Entrada inválida! Digite apenas números separados por vírgula.")
+
 
 def identificar_animal():
     """Obtém características do usuário e consulta o Prolog."""
@@ -69,8 +77,6 @@ def identificar_animal():
                 print(f" Formato inesperado encontrado: {item}")
         else:
             print(f" Formato inesperado encontrado: {item}")
-
-
 
 def menu():
     """Menu principal do sistema."""
