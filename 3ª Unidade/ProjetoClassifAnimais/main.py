@@ -2,7 +2,7 @@ from pyswip import Prolog
 
 # Inicialização do Prolog
 prolog = Prolog()
-prolog.consult("animais.pl")  # Certifique-se de que este arquivo existe
+prolog.consult("animais.pl")
 
 # Opções fixas para evitar erros de digitação
 TIPOS = ["mamifero", "reptil", "ave", "anfibio"]

@@ -69,3 +69,19 @@ listar_comportamentos(Comportamentos) :-
 listar_dietas(Dietas) :- 
     findall(D, (animal(_, Caracteristicas), member(dieta(D), Caracteristicas)), Lista),
     sort(Lista, Dietas).
+
+% Regra para buscar animais por dieta
+animal_por_dieta(Dieta, Nome) :- 
+    animal(Nome, Caracteristicas), 
+    member(dieta(Dieta), Caracteristicas).
+
+% Regra para buscar animais por habitat
+animal_por_habitat(Habitat, Nome) :- 
+    animal(Nome, Caracteristicas), 
+    member(habitat(Habitat), Caracteristicas).
+
+% Regra para buscar animais por comportamento
+animal_por_comportamento(Comportamento, Nome) :- 
+    animal(Nome, Caracteristicas), 
+    member(comportamento(Comportamento), Caracteristicas).
+

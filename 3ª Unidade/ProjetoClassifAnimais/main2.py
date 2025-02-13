@@ -136,13 +136,51 @@ def listar_todos_animais():
         print(f"  Dieta: {dieta.capitalize()}")
         print()
 
+def listar_animais_por_caracteristica(consulta_prolog, lista_opcoes, mensagem):
+    """Lista animais com base em um critério específico (dieta, habitat ou comportamento)."""
+    escolha = escolher_opcoes(lista_opcoes, mensagem)
+    if escolha is None:
+        return  # Se o usuário escolheu voltar, sai da função
+
+    print(f"\nAnimais que correspondem ao critério '{escolha}':")
+
+    try:
+        # Formatar a escolha para corresponder ao formato esperado no Prolog
+        escolha_formatada = escolha.replace(" ", "_")
+
+        # Executar consulta no Prolog
+        animais = list(prolog.query(f"{consulta_prolog}('{escolha_formatada}', Nome)"))
+
+        if animais:
+            for resultado in animais:
+                print(f"- {resultado['Nome'].capitalize()}")
+        else:
+            print("Nenhum animal encontrado para este critério.")
+    except Exception as e:
+        print(f"\nErro ao consultar o Prolog: {e}")
+
+def listar_animais_por_dieta():
+    """Lista animais por dieta."""
+    listar_animais_por_caracteristica("animal_por_dieta", DIETAS, "Escolha a dieta do animal:")
+
+def listar_animais_por_habitat():
+    """Lista animais por habitat."""
+    listar_animais_por_caracteristica("animal_por_habitat", HABITATS, "Escolha o habitat do animal:")
+
+def listar_animais_por_comportamento():
+    """Lista animais por comportamento."""
+    listar_animais_por_caracteristica("animal_por_comportamento", COMPORTAMENTOS, "Escolha o comportamento do animal:")
+
 def menu():
     """Menu do programa."""
     while True:
         print("\n=== Sistema de Classificação de Animais ===")
         print("1. Identificar um animal")
         print("2. Listar todos os animais")
-        print("3. Sair")
+        print("3. Listar animais por dieta")
+        print("4. Listar animais por habitat")
+        print("5. Listar animais por comportamento")
+        print("6. Sair")
 
         opcao = input("Escolha uma opção: ")
 
@@ -151,10 +189,17 @@ def menu():
         elif opcao == "2":
             listar_todos_animais()
         elif opcao == "3":
+            listar_animais_por_dieta()
+        elif opcao == "4":
+            listar_animais_por_habitat()
+        elif opcao == "5":
+            listar_animais_por_comportamento()
+        elif opcao == "6":
             print("Saindo...")
             break
         else:
             print("Opção inválida, tente novamente!")
+
 
 
 # Executa o menu principal
