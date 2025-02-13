@@ -171,6 +171,76 @@ def listar_animais_por_comportamento():
     """Lista animais por comportamento."""
     listar_animais_por_caracteristica("animal_por_comportamento", COMPORTAMENTOS, "Escolha o comportamento do animal:")
 
+def modo_akinator():
+    """Tenta adivinhar um animal com base nas respostas do usuário."""
+    print("\n=== Modo Akinator ===")
+
+    respostas = []
+
+    # Pergunta sobre características físicas (exclusivas entre si)
+    tem_pelo = escolher_opcoes(["Sim", "Não"], "O animal tem pelo?")
+    if tem_pelo == "Sim":
+        respostas.append("tem_pelo")
+    else:
+        tem_penas = escolher_opcoes(["Sim", "Não"], "O animal tem penas?")
+        if tem_penas == "Sim":
+            respostas.append("tem_penas")
+        else:
+            tem_escamas = escolher_opcoes(["Sim", "Não"], "O animal tem escamas?")
+            if tem_escamas == "Sim":
+                respostas.append("tem_escamas")
+
+    # Pergunta sobre outras características
+    if escolher_opcoes(["Sim", "Não"], "O animal vive na água?") == "Sim":
+        respostas.append("vive_na_agua")
+
+    if escolher_opcoes(["Sim", "Não"], "O animal pode voar?") == "Sim":
+        respostas.append("pode_voar")
+
+    if escolher_opcoes(["Sim", "Não"], "O animal bota ovos?") == "Sim":
+        respostas.append("bota_ovos")
+
+    # Pergunta sobre dieta e habitat
+    dieta = escolher_opcoes(DIETAS, "Escolha a dieta do animal:")
+    if dieta and dieta != "Não sei":
+        respostas.append(f"dieta({dieta.replace(' ', '_')})")
+
+    habitat = escolher_opcoes(HABITATS, "Escolha o habitat do animal:")
+    if habitat and habitat != "Não sei":
+        respostas.append(f"habitat({habitat.replace(' ', '_')})")
+
+    # Verifica se há respostas válidas
+    if not respostas:
+        print("\nNenhuma característica foi selecionada.")
+        return
+
+    # Formata a consulta para o Prolog
+    respostas_formatadas = "[" + ", ".join(respostas) + "]"
+
+    # Consulta ao Prolog
+    consulta = f"adivinhar_animal({respostas_formatadas}, AnimaisPossiveis)"
+    
+    try:
+        resultado = list(prolog.query(consulta))
+    except Exception as e:
+        print(f"\nErro ao consultar o Prolog: {e}")
+        return
+
+    if resultado and "AnimaisPossiveis" in resultado[0]:
+        animais_possiveis = resultado[0]["AnimaisPossiveis"]
+    else:
+        animais_possiveis = []
+
+    print("\n=== Resultado ===")
+    if not animais_possiveis:
+        print("Nenhum animal encontrado com essas características.")
+    elif len(animais_possiveis) == 1:
+        print(f"\nO animal que você está pensando é um **{animais_possiveis[0].capitalize()}**!")
+    else:
+        print("\nOs possíveis animais são:")
+        for animal in animais_possiveis:
+            print(f"- {animal.capitalize()}")
+
 def menu():
     """Menu do programa."""
     while True:
@@ -180,7 +250,8 @@ def menu():
         print("3. Listar animais por dieta")
         print("4. Listar animais por habitat")
         print("5. Listar animais por comportamento")
-        print("6. Sair")
+        print("6. Modo Akinator")
+        print("7. Sair")
 
         opcao = input("Escolha uma opção: ")
 
@@ -195,10 +266,13 @@ def menu():
         elif opcao == "5":
             listar_animais_por_comportamento()
         elif opcao == "6":
+            modo_akinator()
+        elif opcao == "7":
             print("Saindo...")
             break
         else:
             print("Opção inválida, tente novamente!")
+
 
 
 
