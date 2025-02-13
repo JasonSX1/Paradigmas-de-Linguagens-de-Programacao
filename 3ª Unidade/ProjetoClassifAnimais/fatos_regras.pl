@@ -10,7 +10,7 @@ animal(cobra, [habitat(floresta), comportamento(solitario), dieta(carnivoro), te
 animal(coelho, [habitat(campo), comportamento(em_grupo), dieta(herbivoro), tem_pelo]).
 animal(coruja, [habitat(floresta), comportamento(solitario), dieta(carnivoro), tem_penas, pode_voar, bota_ovos]).
 animal(elefante, [habitat(savana), comportamento(social), dieta(herbivoro), tem_pelo]).
-animal(falacao, [habitat(amazonia), comportamento(social), dieta(frugivoro), tem_penas, pode_voar, bota_ovos]).
+animal(falcao, [habitat(amazonia), comportamento(social), dieta(frugivoro), tem_penas, pode_voar, bota_ovos]).
 animal(flamingo, [habitat(pantanal), comportamento(em_grupo), dieta(herbivoro), tem_penas, pode_voar, bota_ovos]).
 animal(gato, [habitat(urbano), comportamento(independente), dieta(carnivoro), tem_pelo]).
 animal(golfinho, [habitat(oceano), comportamento(social), dieta(carnivoro), vive_na_agua]).
@@ -131,9 +131,55 @@ adivinhar_animal(Respostas, AnimaisPossiveis) :-
         Lista),
     list_to_set(Lista, AnimaisPossiveis). % Remove duplicatas
 
-% Verifica se todas as características fornecidas pelo usuário estão na lista de características do animal
 verificar_caracteristicas([], _). % Se não há características para verificar, retorna verdadeiro.
 verificar_caracteristicas([Caracteristica | Resto], CaracteristicasAnimal) :-
-    (member(Caracteristica, CaracteristicasAnimal) ; Caracteristica = dieta(Nao_sei) ; Caracteristica = habitat(Nao_sei)), 
+    (member(Caracteristica, CaracteristicasAnimal) ; 
+     Caracteristica = dieta('não_sei') ; 
+     Caracteristica = habitat('não_sei')), 
     verificar_caracteristicas(Resto, CaracteristicasAnimal).
 
+
+% ==========================================
+% > Regras para cálculo do ecossistema
+% ==========================================
+
+% Lista todos os animais que vivem em um determinado habitat
+ecossistema(Habitat, Animais) :-
+    findall(Nome, (animal(Nome, Caracteristicas), member(habitat(Habitat), Caracteristicas)), Lista),
+    list_to_set(Lista, Animais). % Remove duplicatas
+
+% Retorna todos os herbívoros (incluindo frugívoros) em um habitat específico
+herbivoros_no_bioma(Habitat, Herbivoros) :-
+    findall(Nome, 
+        (animal(Nome, Caracteristicas), 
+         member(habitat(Habitat), Caracteristicas), 
+         (member(dieta(herbivoro), Caracteristicas) ; member(dieta(frugivoro), Caracteristicas))),
+        Lista),
+    list_to_set(Lista, Herbivoros).
+
+% Retorna todos os carnívoros em um habitat específico
+carnivoros_no_bioma(Habitat, Carnivoros) :-
+    findall(Nome, 
+        (animal(Nome, Caracteristicas), 
+         member(habitat(Habitat), Caracteristicas), 
+         member(dieta(carnivoro), Caracteristicas)),
+        Lista),
+    list_to_set(Lista, Carnivoros).
+
+% Retorna todos os onívoros em um habitat específico
+onivoros_no_bioma(Habitat, Onivoros) :-
+    findall(Nome, 
+        (animal(Nome, Caracteristicas), 
+         member(habitat(Habitat), Caracteristicas), 
+         member(dieta(onivoro), Caracteristicas)),
+        Lista),
+    list_to_set(Lista, Onivoros).
+
+
+% Regra para estimar o equilíbrio do ecossistema
+equilibrio_ecossistema(Habitat, Estado) :-
+    herbivoros_no_bioma(Habitat, Herbivoros),
+    carnivoros_no_bioma(Habitat, Carnivoros),
+    length(Herbivoros, NumHerbivoros),
+    length(Carnivoros, NumCarnivoros),
+    (NumCarnivoros > NumHerbivoros -> Estado = "Desequilibrado" ; Estado = "Equilibrado").

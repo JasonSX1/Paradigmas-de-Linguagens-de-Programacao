@@ -179,34 +179,53 @@ def modo_akinator():
 
     # Pergunta sobre características físicas (exclusivas entre si)
     tem_pelo = escolher_opcoes(["Sim", "Não"], "O animal tem pelo?")
+    if tem_pelo is None:
+        return  # Volta para o menu principal
     if tem_pelo == "Sim":
         respostas.append("tem_pelo")
     else:
         tem_penas = escolher_opcoes(["Sim", "Não"], "O animal tem penas?")
+        if tem_penas is None:
+            return
         if tem_penas == "Sim":
             respostas.append("tem_penas")
         else:
             tem_escamas = escolher_opcoes(["Sim", "Não"], "O animal tem escamas?")
+            if tem_escamas is None:
+                return
             if tem_escamas == "Sim":
                 respostas.append("tem_escamas")
 
     # Pergunta sobre outras características
-    if escolher_opcoes(["Sim", "Não"], "O animal vive na água?") == "Sim":
+    vive_na_agua = escolher_opcoes(["Sim", "Não"], "O animal vive na água?")
+    if vive_na_agua is None:
+        return
+    if vive_na_agua == "Sim":
         respostas.append("vive_na_agua")
 
-    if escolher_opcoes(["Sim", "Não"], "O animal pode voar?") == "Sim":
+    pode_voar = escolher_opcoes(["Sim", "Não"], "O animal pode voar?")
+    if pode_voar is None:
+        return
+    if pode_voar == "Sim":
         respostas.append("pode_voar")
 
-    if escolher_opcoes(["Sim", "Não"], "O animal bota ovos?") == "Sim":
+    bota_ovos = escolher_opcoes(["Sim", "Não"], "O animal bota ovos?")
+    if bota_ovos is None:
+        return
+    if bota_ovos == "Sim":
         respostas.append("bota_ovos")
 
     # Pergunta sobre dieta e habitat
     dieta = escolher_opcoes(DIETAS, "Escolha a dieta do animal:")
-    if dieta and dieta != "Não sei":
+    if dieta is None:
+        return
+    if dieta != "Não sei":
         respostas.append(f"dieta({dieta.replace(' ', '_')})")
 
     habitat = escolher_opcoes(HABITATS, "Escolha o habitat do animal:")
-    if habitat and habitat != "Não sei":
+    if habitat is None:
+        return
+    if habitat != "Não sei":
         respostas.append(f"habitat({habitat.replace(' ', '_')})")
 
     # Verifica se há respostas válidas
@@ -241,6 +260,60 @@ def modo_akinator():
         for animal in animais_possiveis:
             print(f"- {animal.capitalize()}")
 
+
+def calcular_ecossistema():
+    """Consulta o Prolog para calcular a biodiversidade de um habitat e verificar seu equilíbrio."""
+    habitat = escolher_opcoes(HABITATS, "Escolha o habitat para calcular o ecossistema:")
+    if habitat is None:
+        return  # Se o usuário escolheu voltar, sai da função
+
+    print(f"\n Relatório do Ecossistema para {habitat.capitalize()}")
+
+    # Busca herbívoros, carnívoros e onívoros do bioma
+    try:
+        herbivoros = list(prolog.query(f"herbivoros_no_bioma('{habitat}', Herbivoros)"))[0].get("Herbivoros", [])
+        carnivoros = list(prolog.query(f"carnivoros_no_bioma('{habitat}', Carnivoros)"))[0].get("Carnivoros", [])
+        onivoros = list(prolog.query(f"onivoros_no_bioma('{habitat}', Onivoros)"))[0].get("Onivoros", [])
+        equilibrio = list(prolog.query(f"equilibrio_ecossistema('{habitat}', Estado)"))[0].get("Estado", "Indefinido")
+
+        # Conversão para string normal removendo bytes, se necessário
+        if isinstance(equilibrio, bytes):
+            equilibrio = equilibrio.decode("utf-8")
+
+    except Exception as e:
+        print(f"\nErro ao consultar o Prolog: {e}")
+        return
+
+    # Converte e ordena os nomes para exibição
+    herbivoros = sorted({nome.capitalize() for nome in herbivoros})
+    carnivoros = sorted({nome.capitalize() for nome in carnivoros})
+    onivoros = sorted({nome.capitalize() for nome in onivoros})
+
+    # Exibe os resultados
+    print("\nHerbívoros:")
+    if herbivoros:
+        for nome in herbivoros:
+            print(f"- {nome}")
+    else:
+        print("Nenhum herbívoro encontrado.")
+
+    print("\nCarnívoros:")
+    if carnivoros:
+        for nome in carnivoros:
+            print(f"- {nome}")
+    else:
+        print("Nenhum carnívoro encontrado.")
+
+    print("\nOnívoros:")
+    if onivoros:
+        for nome in onivoros:
+            print(f"- {nome}")
+    else:
+        print("Nenhum onívoro encontrado.")
+
+    # Verifica equilíbrio ecológico
+    print(f"\n Estado do ecossistema: {equilibrio}")
+
 def menu():
     """Menu do programa."""
     while True:
@@ -251,7 +324,8 @@ def menu():
         print("4. Listar animais por habitat")
         print("5. Listar animais por comportamento")
         print("6. Modo Akinator")
-        print("7. Sair")
+        print("7. Calcular Ecossistema")
+        print("8. Sair")
 
         opcao = input("Escolha uma opção: ")
 
@@ -268,13 +342,12 @@ def menu():
         elif opcao == "6":
             modo_akinator()
         elif opcao == "7":
+            calcular_ecossistema()
+        elif opcao == "8":
             print("Saindo...")
             break
         else:
             print("Opção inválida, tente novamente!")
-
-
-
 
 # Executa o menu principal
 if __name__ == "__main__":
