@@ -57,7 +57,7 @@ def identificar_animal():
         print("\n Você não selecionou nenhuma característica válida.")
         return
     
-    # Substituir espaços por underscores e adicionar aspas para evitar erro no Prolog
+    # Substituir espaços por underlines e adicionar aspas para evitar erro no Prolog
     respostas_formatadas = "[" + ", ".join([f"'{r.replace(' ', '_')}'" for r in respostas]) + "]"
 
     # Consulta ao Prolog
@@ -69,6 +69,7 @@ def identificar_animal():
         print(f"\n Erro ao consultar o Prolog: {e}")
         return
 
+    # Verificar e exibir os resultados da query
     if resultado and "AnimaisComProbabilidades" in resultado[0]:
         animais_probabilidades = resultado[0]["AnimaisComProbabilidades"]
     else:
@@ -84,7 +85,7 @@ def identificar_animal():
 
         # Remove parênteses da string recebida pela query no prolog
         if item.startswith("(") and item.endswith(")"):
-            item = item[1:-1]  # Removendo o primeiro e o último caractere
+            item = item[1:-1]  # Removendo o primeiro e o último caractere (Os parênteses)
 
         partes = item.rsplit(",", 1)  # Divide a string na última vírgula, para separar o animal da porcentagem
 

@@ -64,6 +64,9 @@ pode_voar(Nome) :-
     animal(Nome, Caracteristicas), 
     member(pode_voar, Caracteristicas).
 
+% ==============================
+% > Regras para identificar animais
+% ==============================
 
 % Regras para calcular a correspondência de características
 % Conta quantas características fornecidas aparecem na lista de um animal
@@ -82,13 +85,13 @@ identificar_animal(Respostas, AnimaisComProbabilidades) :-
         (animal(Animal, Caracteristicas),
         calcular_probabilidade(Respostas, Caracteristicas, Probabilidade)),
         Lista),
-    (Lista \= [] -> sort(2, @>=, Lista, AnimaisComProbabilidades) ; AnimaisComProbabilidades = []).
+    (Lista \= [] -> sort(2, @>=, Lista, AnimaisComProbabilidades) ; AnimaisComProbabilidades = []). % Ordena por probabilidade pegando o segundo elemento da tupla
 
 % Calcula a probabilidade de um animal ser identificado
 calcular_probabilidade(Respostas, Caracteristicas, Probabilidade) :-
-    length(Respostas, Total), % Quantidade de características fornecidas
-    contar_correspondencias(Respostas, Caracteristicas, Match),
-    Probabilidade is (Match / Total) * 100. % Cálculo da probabilidade
+    length(Respostas, Total), % Conta a quantidade de características fornecidas
+    contar_correspondencias(Respostas, Caracteristicas, Match), % Conta a quantidade de correspondências
+    Probabilidade is (Match / Total) * 100. % Cálculo da probabilidade % Calcula a probabilidade de um animal ser identificado
 
 % Retorna todos os habitats únicos na base de conhecimento
 listar_habitats(Habitats) :- 
@@ -137,7 +140,6 @@ verificar_caracteristicas([Caracteristica | Resto], CaracteristicasAnimal) :-
      Caracteristica = dieta('não_sei') ; 
      Caracteristica = habitat('não_sei')), 
     verificar_caracteristicas(Resto, CaracteristicasAnimal).
-
 
 % ==========================================
 % > Regras para cálculo do ecossistema
